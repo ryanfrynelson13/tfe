@@ -1,0 +1,16 @@
+services:
+
+  db:
+    container_name: tfe
+    image: postgres
+    environment:
+      POSTGRES_USER: ryan
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: tfe
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    ports:
+      - 8000:8080
