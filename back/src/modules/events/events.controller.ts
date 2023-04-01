@@ -7,7 +7,7 @@ import * as events from '../../data/events.json'
 export class EventsController {
 
     constructor(
-        private eventsService: EventsService
+        private readonly eventsService: EventsService
     ){}
 
     @Get()

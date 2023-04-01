@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { EventLocationEntity } from "./event-location.entity";
+import { CategoryEntity } from "./category.entity";
 
 
 @Entity('events')
@@ -54,5 +56,11 @@ export class EventEntity {
         type: 'int'
     })
     places: number
+
+    @ManyToOne(() => EventLocationEntity, (location) => location.id)
+    location: EventLocationEntity
+
+    @ManyToOne(() => CategoryEntity, (category) => category.id)
+    category: CategoryEntity
 
 }
