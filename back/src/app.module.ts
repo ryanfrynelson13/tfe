@@ -4,6 +4,8 @@ import { ConfigModule } from '@nestjs/config';
 import { EventsModule } from './modules/events/events.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
+import { CoreModule } from './core/core.module';
+import { TestsModule } from './modules/tests/tests.module';
 
 
 @Module({
@@ -20,9 +22,11 @@ import { UsersModule } from './modules/users/users.module';
       entities: [__dirname + '/**/*.entity.{ts, js}'],
       autoLoadEntities: true
     }),
+    CoreModule,
     EventsModule,
     AuthModule,
     UsersModule,
+    TestsModule,
   ],
   controllers: [],
   providers: [],

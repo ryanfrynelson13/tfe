@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { EventsController } from './controllers/events.controller';
+import { TestsController } from './tests.controller';
 import { CoreModule } from 'src/core/core.module';
 
 @Module({
   imports: [CoreModule],
-  controllers: [EventsController]
+  controllers: [TestsController]
 })
-export class EventsModule {}
+export class TestsModule {}

@@ -1,0 +1,20 @@
+[
+    {
+        "title": "admin",
+        "canCreate": true,
+        "canUpdate": true,
+        "canSave": true
+    },
+    {
+        "title": "event maker",
+        "canCreate": true,
+        "canUpdate": true,
+        "canSave": false
+    },
+    {
+        "title": "user",
+        "canCreate": false,
+        "canUpdate": false,
+        "canSave": false
+    }
+]
