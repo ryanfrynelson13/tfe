@@ -10,16 +10,21 @@ export class EventsService {
         @InjectRepository(EventEntity) private eventRepo: Repository<EventEntity>
     ){}
 
-    async findAllEvents() {
+    async findAllEvents(limit: number) {
         const allEvents = await this.eventRepo.find({
             where: {
                 endDate: MoreThan(new Date().toISOString())
             },
             relations:{
-                location: true,
-                category: true,
+                tickets: true,
                 reviews: true
-            }
+            },
+            select:{
+                id:true,
+                title:true,
+                imageUrl:true,
+            },
+            take: limit
         })
 
         return allEvents

@@ -15,9 +15,8 @@ const Navbar = () => {
             </div>
             <div className={classes.search}>
                 <form>
-                    <label htmlFor='search'>Search</label>
                     <input type="text" name="search" id="search" placeholder='Events...'/>
-                    <button type='submit'>🔍</button>
+                    <button type='submit'>Search</button>
                 </form>
             </div>
         </nav>

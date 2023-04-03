@@ -12,17 +12,30 @@
 
 .search input{
     width: 12vw;
+    padding: 10px 4px;
     font-family: inherit;
     font-size: inherit;
     border: transparent;
     margin-left: 0.2ch;
 }
 
+.search input:focus{
+    outline: none;
+}
+
 .search button{
     padding: 0.5ch;
-    padding-right: 1ch;
-    height: 3vh;
-    background-color: #110E1B;
+    color: white;
+    font-size: inherit;
+    font-family: inherit;
+    background-color: #230046 ;
     border: 0.2px solid rgba(255, 255, 255, 0.349);
-    border-radius: 0 50% 50% 0;
+    padding: 10px;
+}
+
+.search button:hover,
+.search button:active{
+    cursor: pointer;
+    background-color: #17002e ;
+
 }

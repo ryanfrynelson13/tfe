@@ -1,5 +1,5 @@
 .layout{
-
+    color: white;
 }
 
 h1{
@@ -7,6 +7,12 @@ h1{
     text-align: center;
     border: 4px solid white;
     padding: 0.5ch;
+    background-color: rgba(255, 255, 255, 0.217);
+}
+
+h2{
+    text-align: center;
+    font-size: 2.5rem;
 }
 
 a{
