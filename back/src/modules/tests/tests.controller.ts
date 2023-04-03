@@ -31,7 +31,7 @@ export class TestsController {
         return 'done'
     }
 
-    @Post('categories')
+    @Post('locations')
     async populateLocations(
         @Body() body: any
     ){
