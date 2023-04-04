@@ -2,7 +2,8 @@
     display: grid;
     width: 80%;
     margin: 0 auto;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 12vw 12vw 12vw 12vw 12vw 12vw;
+    grid-template-rows: 30vh;
     row-gap: 4ch;
     column-gap: 2ch;
 }

@@ -1,8 +1,4 @@
-import { useMemo } from 'react'
-import { Event } from '../../../types/events/event.type'
-import classes from './event-card.module.css'
-
-const images = [
+[
     "https://images.unsplash.com/photo-1563982673461-1ca8b01e9b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
     "https://images.unsplash.com/photo-1549451371-64aa98a6f660?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     "https://plus.unsplash.com/premium_photo-1677609991615-0657859f0a8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
@@ -38,42 +34,8 @@ const images = [
     "https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
     "https://images.unsplash.com/photo-1511171735792-048024585d63?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     "https://plus.unsplash.com/premium_photo-1661598716591-4e08ff76c6f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
-    "https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    "https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
     "https://images.unsplash.com/photo-1461360370896-922624d12aa1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80",
     "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     "https://images.unsplash.com/photo-1582034438152-77bc94ffa6ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1146&q=80"
 ]
-
-const EventCard = ({id, imageUrl, title, reviews, tickets}: Event) => {
-
-    const price = useMemo(() => {
-        let prices: number[] = []
-        for(const ticket of tickets){
-            prices.push(ticket.pricePerTicket)
-        }
-        return Math.min(...prices)
-    },[tickets])
-
-    const stars = useMemo(() => {
-        return reviews.length >0 ? reviews.reduce((total, {stars}) => {
-           return  total + stars
-        }, 0)/ reviews.length : 0
-    },[reviews])
-
-    const random = Math.floor(Math.random()*39)
-
-    return(
-        <div className={classes.card}>
-            <div className={classes.image}>
-                <img src={images[random]} alt="event" />
-            </div>
-            <div>
-                <p>{title}</p>
-                <p>apd de {price}€</p>
-                <p>{stars > 0 ? stars.toFixed(1) + '💖' : ''}</p>
-            </div>
-        </div>
-    )
-}
-
-export default EventCard

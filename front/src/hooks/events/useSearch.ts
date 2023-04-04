@@ -3,17 +3,19 @@ import axios from 'axios'
 import { EVENT_URLS } from "../../enums/event-urls.enum"
 import { Event } from "../../types/events/event.type"
 
-const useEvents = (limit: string) => {
+const useSearch = (q: string) => {
     const [isLoading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<unknown>(null)
     const [events, setEvents] = useState<Event[]>([])
 
     useEffect(() => {
-        getEvents()
-    },[])
+        if(q !== ''){
+            getEvents()
+        }
+    },[q])
     let getEvents = async() => {
         try {
-            const {data} = await axios.get<Event[]>(EVENT_URLS.getEvents +'?limit=' + limit)
+            const {data} = await axios.get<Event[]>(EVENT_URLS.getSearchedEvents +'?q=' + q)
             setLoading(false)
             setEvents(data)
         } catch (error) {
@@ -28,4 +30,4 @@ const useEvents = (limit: string) => {
     return {isLoading, events, error}
 }
 
-export default useEvents
+export default useSearch

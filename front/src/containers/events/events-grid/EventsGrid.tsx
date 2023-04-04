@@ -5,8 +5,7 @@ import classes from './events-grid.module.css'
 
 
 const EventsGrid = () => {
-    const {isLoading, events, error} = useEvents('18')
-    console.log(events)
+    const {isLoading, events, error} = useEvents('24')
     const eventsMap = events?.map((event: Event) => (
         <EventCard {...event} key={event.id}/>
     ))

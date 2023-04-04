@@ -18,6 +18,14 @@ export class EventsController {
         return allEvents
     }
 
+    @Get('search')
+    async getSearchedEvents(
+        @Query('q') q: string
+    ){
+        const searchedEvents = await this.eventsService.findSearchedEvents(q)
+        return searchedEvents
+    }
+
     @Get(':id')
     getOneEvents(
         @Param('id') id: number

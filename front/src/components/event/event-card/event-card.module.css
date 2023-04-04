@@ -1,6 +1,26 @@
 .card{
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+
+.card .image {
+    max-height: 18vh;
+    min-height: 18vh;
+    overflow: hidden;
+    /* cursor: pointer; */
+}
+
+.card .image > img{
+    transition: 0.5s;
+}
+ 
+.card .image:hover > img{
+    transform: scale(1.1);
 }
 
 .card img{

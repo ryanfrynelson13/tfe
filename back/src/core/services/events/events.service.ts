@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EventEntity } from 'src/core/models/entities/Event.entity';
 import { NewEventType } from 'src/core/types/events/new-event.type';
-import { MoreThan, Repository } from 'typeorm';
+import { Like, MoreThan, Repository } from 'typeorm';
 
 @Injectable()
 export class EventsService {
@@ -25,6 +25,27 @@ export class EventsService {
                 imageUrl:true,
             },
             take: limit
+        })
+
+        return allEvents
+    }
+
+    async findSearchedEvents(q: string) {
+        const allEvents = await this.eventRepo.find({
+            where: {
+                endDate: MoreThan(new Date().toISOString()),
+                title: Like(`%${q}%`)
+            },
+            relations:{
+                tickets: true,
+                reviews: true
+            },
+            select:{
+                id:true,
+                title:true,
+                imageUrl:true,
+            },
+            take: 20
         })
 
         return allEvents
