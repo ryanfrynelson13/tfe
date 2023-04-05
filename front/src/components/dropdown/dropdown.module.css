@@ -1,0 +1,15 @@
+.dropdown{
+    width: 12vw;
+    background-color: white;
+    color: black;
+    position: absolute;
+    margin: 0.2rem 0 0 0.3rem;
+}
+
+.dropdown ul{
+    list-style: none;
+    padding-left: 1ch;
+}
+
+
+

@@ -1,0 +1,24 @@
+.item{
+    /* padding: 0.5ch 0; */
+    height: 3ch;
+    display: flex;
+    justify-content: space-between;
+    max-width: fit-content;
+}
+
+.item > div {
+    height: 2ch;
+    width: 2ch;
+}
+
+.item img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.item p{
+    font-size: 0.8rem;
+    margin: 0 auto;
+    margin-left: 1ch;
+}

@@ -20,9 +20,10 @@ export class EventsController {
 
     @Get('search')
     async getSearchedEvents(
-        @Query('q') q: string
+        @Query('q') q: string,
+        @Query('limit') limit: number
     ){
-        const searchedEvents = await this.eventsService.findSearchedEvents(q)
+        const searchedEvents = await this.eventsService.findSearchedEvents(q, limit)
         return searchedEvents
     }
 

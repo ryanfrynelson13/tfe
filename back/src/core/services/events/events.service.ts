@@ -30,7 +30,7 @@ export class EventsService {
         return allEvents
     }
 
-    async findSearchedEvents(q: string) {
+    async findSearchedEvents(q: string, limit: number) {
         const allEvents = await this.eventRepo.find({
             where: {
                 endDate: MoreThan(new Date().toISOString()),
@@ -45,7 +45,7 @@ export class EventsService {
                 title:true,
                 imageUrl:true,
             },
-            take: 20
+            take: limit
         })
 
         return allEvents

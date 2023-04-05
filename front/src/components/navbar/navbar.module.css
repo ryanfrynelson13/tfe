@@ -6,6 +6,10 @@
     justify-content: space-around;
 }
 
+form{
+    position: relative
+}
+
 .search{
     font-size: 1.2rem;
 }
