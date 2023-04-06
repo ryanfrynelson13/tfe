@@ -1,6 +1,6 @@
 import { TicketPrice } from "../ticket-prices/ticket-price.type"
 
-export type Event = {
+export type EventType = {
     id: number
     title: string
     imageUrl: string

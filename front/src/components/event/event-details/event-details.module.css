@@ -1,0 +1,30 @@
+.details {
+    width: 20vw;
+    background-color: #230046;
+}
+
+.details ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-right: 1px solid white;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+}
+
+.details li {
+    height: 8vh;
+    font-size: 1.6rem;
+    border-bottom: 1px solid white;
+    padding: 1ch;
+    display: flex;
+    align-items: center;
+}
+
+.details p {
+    margin: 0;
+}
+
+.title{
+    justify-self: center;
+}

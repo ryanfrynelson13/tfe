@@ -1,14 +1,27 @@
 .item{
     /* padding: 0.5ch 0; */
-    height: 3ch;
+    height: 6ch;
     display: flex;
     justify-content: space-between;
     max-width: fit-content;
+    align-items: center;
+    border-bottom: 1px solid black;
+    min-width: 100%;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.item:hover{
+    background-color: black;
+    color: white;
+    height: 6.2ch;
 }
 
 .item > div {
-    height: 2ch;
-    width: 2ch;
+    height: 6ch;
+    width: 6ch;
+    min-height: 6ch;
+    min-width: 6ch;
 }
 
 .item img{
@@ -21,4 +34,5 @@
     font-size: 0.8rem;
     margin: 0 auto;
     margin-left: 1ch;
+    padding-right: 1ch;
 }

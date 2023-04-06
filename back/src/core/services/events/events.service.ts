@@ -1,13 +1,18 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { updateEventDto } from 'src/core/dtos/events/update-event.dto';
 import { EventEntity } from 'src/core/models/entities/Event.entity';
+import { CategoryEntity } from 'src/core/models/entities/category.entity';
+import { EventLocationEntity } from 'src/core/models/entities/event-location.entity';
 import { NewEventType } from 'src/core/types/events/new-event.type';
 import { Like, MoreThan, Repository } from 'typeorm';
 
 @Injectable()
 export class EventsService {
     constructor(
-        @InjectRepository(EventEntity) private eventRepo: Repository<EventEntity>
+        @InjectRepository(EventEntity) private eventRepo: Repository<EventEntity>,
+        @InjectRepository(CategoryEntity) private categoryRepo: Repository<CategoryEntity>,
+        @InjectRepository(EventLocationEntity) private locationRepo: Repository<EventLocationEntity>,
     ){}
 
     async findAllEvents(limit: number) {
@@ -70,10 +75,20 @@ export class EventsService {
 
 
     async createEvent(event: NewEventType) {
-        const newEvent = await this.eventRepo.create(event.event)
+        const newEvent: EventEntity = await this.eventRepo.create(event.event)
 
-        const savedEvent = await this.eventRepo.save(newEvent)
+        const category = await this.categoryRepo.findOne({where:{id: event.categoryId}})
+        const location= await this.locationRepo.findOne({where:{id: event.locationId}})
 
-        return savedEvent
+        newEvent.category = category
+        newEvent.location = location
+
+        return this.eventRepo.save(newEvent)
+    }
+
+    async updateEvent(attrs: Partial<EventEntity>, eventId: number){
+        const eventToUpdate = await this.eventRepo.findOneBy({id: eventId})
+        Object.assign(eventToUpdate, attrs)
+        return this.eventRepo.save(eventToUpdate)
     }
 }

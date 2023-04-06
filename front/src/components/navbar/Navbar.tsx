@@ -2,14 +2,15 @@ import { NavLink } from 'react-router-dom'
 import classes from './navbar.module.css'
 import useSearch from '../../hooks/events/useSearch'
 import { useEffect, useState } from 'react'
-import { Event } from '../../types/events/event.type'
+import { EventType } from '../../types/events/event.type'
 import Dropdown from '../dropdown/Dropdown'
 
 
 const Navbar = () => {
 
     const [search, setSearch] = useState<string>('')
-    const {isLoading, events, error} = useSearch(search,'5')
+    const [inputFocus, setInputFocus] = useState<boolean>(false)
+    const {events} = useSearch(search,'5')
 
     return (
         <nav className={classes.navbar}>
@@ -24,10 +25,10 @@ const Navbar = () => {
             <div className={classes.search}>
                 <form>
                     <div>
-                        <input type="text" autoComplete='off' name="search" id="search" placeholder='Events...' value={search} onChange={(e) => setSearch(e.target.value)}/>
+                        <input onFocus={() => setInputFocus(true)} onBlur={() => setInputFocus(false)} type="text" autoComplete='off' name="search" id="search" placeholder='Events...' value={search} onChange={(e) => setSearch(e.target.value)}/>
                         <button type='submit'>Search</button>
                     </div>
-                    {events.length > 0 && <Dropdown items={events}/>}
+                    {events.length > 0 && inputFocus && <Dropdown items={events}/>}
                 </form>
             </div>
         </nav>

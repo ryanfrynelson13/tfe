@@ -1,14 +1,14 @@
-import { Event } from "../../types/events/event.type"
+import { EventType } from "../../types/events/event.type"
 import classes from './dropdown.module.css'
 import DropdownItem from "./item/DropdownItem"
 
 type DropdownProps = {
-    items: Event[]
+    items: EventType[]
 }
 
 const Dropdown = ({items}: DropdownProps) => {
 
-    const itemsMap = items?.map((item: Event) => (
+    const itemsMap = items?.map((item: EventType) => (
        <DropdownItem key={item.id} {...item}/>
     ))
     return (

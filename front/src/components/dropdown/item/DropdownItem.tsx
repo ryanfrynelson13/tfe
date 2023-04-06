@@ -1,8 +1,8 @@
-import { Event } from "../../../types/events/event.type"
+import { EventType } from "../../../types/events/event.type"
 import classes from './item.module.css'
 
 
-const DropdownItem = ({title, imageUrl}: Event) => {
+const DropdownItem = ({title, imageUrl}: EventType) => {
     return(
         <li className={classes.item}>
             <div>

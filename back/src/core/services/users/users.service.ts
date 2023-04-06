@@ -23,7 +23,7 @@ export class UsersService {
         const user = await this.usersRepo.findOne({where: {id: userId}, relations: {favorites: true}})
         const event = await this.eventsRepo.findOne({where: {id: eventId}})
 
-        if(!user || event){
+        if(!user || !event){
             throw new NotFoundException("couldn't find user or event")
         }
 
