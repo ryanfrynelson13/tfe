@@ -8,13 +8,34 @@ const EventDetails = ({startDate, endDate, location, category, duration, places}
                 <li className={classes.title}>
                    <p>Details</p> 
                 </li>
-                <li>Start Date: {startDate}</li>
-                <li>End Date: {endDate}</li>
-                <li>Location: {`${location.number} ${location.street}, ${location.postalCode} ${location.country}`}</li>
-                <li>Type: {category.category}</li>
-                <li>Organizer: {location.name}</li>
-                <li>Duration: {duration}</li>
-                <li>Places: {places}</li>
+                <li>
+                    <p>Start Date:</p>  
+                    <p className={classes.bold}>{startDate}</p>
+                </li>
+                <li>
+                    <p>End Date:</p>  
+                    <p className={classes.bold}>{endDate}</p>
+                </li>
+                <li>
+                    <p>Location: </p>  
+                    <p className={classes.bold}>{`${location.number} ${location.street}, ${location.postalCode} ${location.country}`}</p>
+                </li>
+                <li>
+                    <p>Type: </p>  
+                    <p className={classes.bold}>{category.category}</p>
+                </li>
+                <li>
+                    <p>Organizer:</p>  
+                    <p className={classes.bold}>{location.name}</p>
+                </li>
+                <li>
+                    <p>Duration:</p>  
+                    <p className={classes.bold}>{duration}</p>
+                </li>
+                <li>
+                    <p>Places:</p>  
+                    <p className={classes.bold}>{places}</p>
+                </li>
             </ul>
         </div>
     )

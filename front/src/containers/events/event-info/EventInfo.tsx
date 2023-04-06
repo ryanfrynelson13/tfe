@@ -1,3 +1,4 @@
+import EventDescription from "../../../components/event/event-description/EventDescription"
 import EventDetails from "../../../components/event/event-details/EventDetails"
 import { DetailledEvent } from "../../../types/events/detailled-event.type"
 import classes from './event-info.module.css'
@@ -10,10 +11,7 @@ type EventInfoProps = {
 const EventInfo = ({event}:EventInfoProps) => {
     return(
         <div className={classes.info}>
-            <div className={classes.description}>
-
-
-            </div>
+            <EventDescription {...event}/>
             <EventDetails {...event}/>
         </div>
     )

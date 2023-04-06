@@ -86,7 +86,7 @@ export class EventsService {
         return this.eventRepo.save(newEvent)
     }
 
-    async updateEvent(attrs: Partial<EventEntity>, eventId: number){
+    async updateEvent(attrs: Partial<EventEntity>, eventId: number){    
         const eventToUpdate = await this.eventRepo.findOneBy({id: eventId})
         Object.assign(eventToUpdate, attrs)
         return this.eventRepo.save(eventToUpdate)

@@ -1,5 +1,6 @@
 .details {
     width: 20vw;
+    margin: 4ch auto;
     background-color: #230046;
 }
 
@@ -19,12 +20,15 @@
     padding: 1ch;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
-.details p {
-    margin: 0;
+.details ul li.title{
+    justify-content: center;
 }
 
-.title{
-    justify-self: center;
+.bold{
+    font-weight: 700;
+    max-width: 60%;
+    text-align: end;
 }

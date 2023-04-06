@@ -1,0 +1,40 @@
+.description{
+    width: 60vw;
+}
+
+.container{
+    width: 40vw;
+    margin: 4ch auto;
+}
+
+.about{
+    display: flex;
+    font-size: 1.6rem;
+}
+
+.about div{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.event-image{
+    height: 20vw;
+    width: 25vw;
+    margin-right: 4ch;
+}
+
+.event-image img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.stars{
+    text-align: end;
+}
+
+.desc{
+    font-size: 1.4rem;
+    margin-top: 8ch;
+}

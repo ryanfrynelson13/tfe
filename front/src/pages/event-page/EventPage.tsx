@@ -21,7 +21,7 @@ const EventPage = () => {
     },[id])
     return event? (
         <>
-           <Banner imageUrl={event.imageUrl} title={event.title}/>
+           <Banner imageUrl={''} title={event.title}/>
            <EventInfo event={event}/>
 
         </>

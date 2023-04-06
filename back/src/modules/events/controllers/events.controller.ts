@@ -42,11 +42,11 @@ export class EventsController {
         return this.eventsService.createEvent(event)
     }
 
-    // @Patch(':id')
-    // updateEvent(
-    //     @Body() event: updateEventDto,
-    //     @Param('id') id: number
-    // ){
-    //     return this.eventsService.updateEvent(event, id)
-    // }
+    @Patch(':id')
+    updateEvent(
+        @Body() event: updateEventDto,
+        @Param('id') id: number
+    ){
+        return this.eventsService.updateEvent(event, id)
+    }
 }

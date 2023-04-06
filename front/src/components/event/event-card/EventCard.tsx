@@ -3,7 +3,6 @@ import { EventType } from '../../../types/events/event.type'
 import classes from './event-card.module.css'
 import { useNavigate } from 'react-router-dom'
 
-
 const EventCard = ({id, imageUrl, title, reviews, tickets}: EventType) => {
 
     const navigate = useNavigate()
