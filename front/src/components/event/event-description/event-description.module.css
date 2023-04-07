@@ -12,7 +12,18 @@
     font-size: 1.6rem;
 }
 
-.about div{
+.about .side{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.side div{
+    display: flex;
+    justify-content: end;
+}
+
+.about .intro{
     display: flex;
     flex-direction: column;
     justify-content: end;

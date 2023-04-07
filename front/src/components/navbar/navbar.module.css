@@ -6,8 +6,31 @@
     justify-content: space-around;
 }
 
+.navbar a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 2ch;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.navbar a:hover{
+    background-color: #3b3455;
+}
+
+a.active {
+    color: white;
+    background-color: #36026b;
+}
+
 form{
     position: relative
+}
+
+.nav-right{
+    display: flex;
+    justify-content: space-between;
+    width: 35vw;
 }
 
 .search{
@@ -42,4 +65,9 @@ form{
     cursor: pointer;
     background-color: #17002e ;
 
+}
+
+.icon{
+    display: flex;
+    align-items: center;
 }
