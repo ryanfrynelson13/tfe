@@ -1,0 +1,1 @@
+export const jwtConstants = 'C0Tsqf0m7VwzK2lDR7OuBvPEJnXkgtyxQjSjcwW6iZLpN1h4a'

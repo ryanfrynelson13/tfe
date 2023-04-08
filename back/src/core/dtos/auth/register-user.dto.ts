@@ -1,5 +1,5 @@
 import { IsInt, ValidateNested, } from "class-validator"
-import { UserDto } from "./user.dto"
+import { UserDto } from "../users/user.dto"
 import { Type } from "class-transformer"
 
 

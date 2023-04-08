@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import classes from './navbar.module.css'
 import useSearch from '../../hooks/events/useSearch'
 import { useEffect, useState } from 'react'
@@ -6,13 +6,18 @@ import { EventType } from '../../types/events/event.type'
 import Dropdown from '../dropdown/Dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBasketShopping, faUser} from '@fortawesome/free-solid-svg-icons'
+import { useRecoilValue } from 'recoil'
+import { userAtom } from '../../atoms/user.atom'
 
 
 const Navbar = () => {
 
+    const navigate = useNavigate()
+    const user = useRecoilValue(userAtom)
+
     const [search, setSearch] = useState<string>('')
     const [inputFocus, setInputFocus] = useState<boolean>(false)
-    const {events} = useSearch(search,'5')
+    const {events} = useSearch(search,'6')
 
     return (
         <nav className={classes.navbar}>
@@ -64,16 +69,22 @@ const Navbar = () => {
                     />
                 </div>
                 <div className={classes.icon}>
-                    <FontAwesomeIcon
-                        style={{
-                            borderRadius: '50%',
-                            cursor: 'pointer',
-                            fontSize: '1.8rem',
-                            padding: '6px 12px'
-                        }} 
-                        border={true}
-                        icon={faUser}
-                    />
+                    {
+                        user ?  
+                        <FontAwesomeIcon
+                            style={{
+                                borderRadius: '50%',
+                                cursor: 'pointer',
+                                fontSize: '1.8rem',
+                                padding: '6px 12px'
+                            }} 
+                            border={true}
+                            icon={faUser}
+                            onClick={() => navigate('/user/profile')}
+                        />:
+                        <p onClick={() => navigate('/auth/login')}>Login</p>
+                    }
+                   
                 </div>
            
             </div>

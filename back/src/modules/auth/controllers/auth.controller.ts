@@ -11,11 +11,16 @@ export class AuthController {
     ){}
     
     @Post('register')
-    async register(
+    register(
         @Body() body: RegisterUser
     ){
-        const newUser = this.authService.register(body.user, body.permissionId) 
+        return this.authService.register(body.user, body.permissionId) 
+    }
 
-        return newUser
+    @Post('login')
+    login(
+        @Body() body: any
+    ){
+        return this.authService.login(body)
     }
 }

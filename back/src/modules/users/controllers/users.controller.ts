@@ -1,8 +1,11 @@
-import { Controller, Patch, Body, Get, Param } from '@nestjs/common';
+import { Controller, Patch, Body, Get, Param, UseGuards, Request, UseInterceptors, ClassSerializerInterceptor} from '@nestjs/common';
 import { UsersService } from '../../../core/services/users/users.service';
-import { AddFavoriteDto } from 'src/core/dtos/users/add-favorite.dto';
+import { AuthGard } from 'src/core/guards/auth.guard';
+import { UpdateUserDto } from 'src/core/dtos/users/update-user.dto';
+import { Request as expressRequest } from 'express';
 
 
+@UseGuards(AuthGard)
 @Controller('users')
 export class UsersController {
 
@@ -10,18 +13,20 @@ export class UsersController {
         private readonly usersService: UsersService
     ){}
 
-    @Get('favorites/:id')
-    getAllFavorites(
-        @Param('id') id: number
-    ){
-        return this.usersService.findAllFavorites(id)
+    @UseInterceptors(ClassSerializerInterceptor)
+    @Get()
+    getUser(
+        @Request() req){
+        const userId = req.user.id
+        return this.usersService.getOneUser(userId)
     }
-    
-    @Patch('favorites')
-    addToFavorites(
-        @Body() body: AddFavoriteDto
+
+    @Patch(':id')
+    updateUser(
+        @Param('id') id: number,
+        @Body() user: UpdateUserDto
     ){
-        const {userId, eventId} = body
-        return this.usersService.addToFavorites(userId, eventId)
+        return this.usersService.updateUser(id, user)
     }
+   
 }

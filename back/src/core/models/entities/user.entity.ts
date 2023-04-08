@@ -4,6 +4,7 @@ import { AddressUserEntity } from "./address-user.entity";
 import { EventEntity } from "./Event.entity";
 import { ReviewEntity } from "./review.entity";
 import { SaleEntity } from "./sale.entity";
+import { Exclude } from "class-transformer";
 
 @Entity('users')
 export class UserEntity{
@@ -24,6 +25,7 @@ export class UserEntity{
         length: 68,
         nullable: false
     })
+    @Exclude()
     password: string
 
     @Column({

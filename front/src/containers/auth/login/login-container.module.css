@@ -1,0 +1,60 @@
+.login-page{
+  display: flex;
+  flex-direction: column;  
+}
+
+h1{
+    text-align: center;
+}
+
+.login-form{
+    width: 45vw;
+    margin: 0 auto;
+    border: 1px solid black;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #23004668;
+}
+
+.login-page p{
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.sign-up{
+    text-decoration: underline;
+}
+
+a.sign-up:hover
+a.sign-up:active,
+a.sign-up:visited{
+    color: #6220a3;
+}
+
+@media (max-width: 769px) {
+    .login-form{
+        width: 50vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    .login-form{
+        width: 35vw;
+    }
+}
+
+
+@media (min-width: 1440px) {
+    .login-form{
+        width: 30vw;
+    }
+}
+
+@media (min-width: 2000px) {
+    .login-form{
+        width: 20vw;
+    }
+}

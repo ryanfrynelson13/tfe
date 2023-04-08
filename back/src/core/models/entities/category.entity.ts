@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { EventEntity } from "./Event.entity";
+import { type } from "os";
 
 
 @Entity('categories')
@@ -13,6 +14,13 @@ export class CategoryEntity{
     })
     category: string
 
-    @OneToMany(() => EventEntity, (event) => event.category)
-    event: EventEntity[]
+    @Column({
+        type:'varchar',
+        name: 'image_url',
+        nullable: true
+    })
+    imageUrl: string
+
+    @OneToMany(() => EventEntity, (events) => events.category)
+    events: EventEntity[]
 }

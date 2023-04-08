@@ -2,33 +2,44 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EventEntity } from 'src/core/models/entities/Event.entity';
 import { UserEntity } from 'src/core/models/entities/user.entity';
+import { UserType } from 'src/core/types/users/user.type';
 import { Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class UsersService {
 
     constructor(
-        @InjectRepository(UserEntity) private usersRepo: Repository<UserEntity>,
-        @InjectRepository(EventEntity) private eventsRepo: Repository<EventEntity>
+        @InjectRepository(UserEntity) private usersRepo: Repository<UserEntity>
     ){}
 
-    async findAllFavorites(userId: number){
-        const {favorites} = await this.usersRepo.findOne({where: {id: userId}, relations: {favorites: true}})
+    async getOneUser(userId: number){
+        const user = await this.usersRepo.findOne({where: {id: userId}, relations:{
+            favorites: true,
+            permission: true
+        }})
 
-        return favorites
-
-    }
-
-    async addToFavorites(userId: number, eventId: number){
-        const user = await this.usersRepo.findOne({where: {id: userId}, relations: {favorites: true}})
-        const event = await this.eventsRepo.findOne({where: {id: eventId}})
-
-        if(!user || !event){
-            throw new NotFoundException("couldn't find user or event")
+        if(!user){
+            throw new NotFoundException('user not found')
         }
 
-        user.favorites.push(event)
-
-        return this.usersRepo.save(user)
+        return user
     }
+
+    async updateUser(id: number, user: Partial<UserType>){
+        const userToUpdate = await this.usersRepo.findOneBy({id: id})
+
+        if(!userToUpdate){
+            throw new NotFoundException('user not found')
+        }
+
+        if(user.password){
+            user.password = await bcrypt.hash(user.password, 4)
+        }
+
+        const updatedUser = Object.assign(userToUpdate, user)
+
+        return this.usersRepo.save(updatedUser)
+    }
+    
 }

@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { JwtModule } from '@nestjs/jwt'
 import { UserEntity } from 'src/core/models/entities/user.entity';
 import { PermissionEntity } from 'src/core/models/entities/permission.entity';
 import { AddressUserEntity } from 'src/core/models/entities/address-user.entity';
@@ -15,13 +16,18 @@ import { SessionEntity } from "./models/entities/sessions.entity";
 import { SaleEntity } from "./models/entities/sale.entity";
 import { TicketEntity } from "./models/entities/ticket.entity";
 import { TestsService } from "./services/tests/tests.service";
+import { jwtConstants } from "./services/auth/constants";
+import { FavoritesService } from "./services/favorites/favorites.service";
+import { CategoriesService } from "./services/categories/categories.service";
 
 @Module({
     exports: [
         UsersService,
         AuthService,
         EventsService,
-        TestsService
+        TestsService,
+        FavoritesService,
+        CategoriesService
     ],
     imports: [
         TypeOrmModule.forFeature([
@@ -37,12 +43,19 @@ import { TestsService } from "./services/tests/tests.service";
             SaleEntity,
             TicketEntity
         ]),
+        JwtModule.register({
+            global: true,
+            secret: jwtConstants,
+            signOptions: {expiresIn: '2h'}
+        })
     ],
     providers: [
         UsersService,
         AuthService,
         EventsService,
-        TestsService
+        TestsService,
+        FavoritesService,
+        CategoriesService
     ]    
 })
 export class CoreModule{}

@@ -5,29 +5,27 @@ import axios from "axios"
 import { EVENT_URLS } from "../../enums/event-urls.enum"
 import Banner from "../../components/banner/Banner"
 import EventInfo from "../../containers/events/event-info/EventInfo"
+import useEvent from "../../hooks/events/useEvent"
 
 
 const EventPage = () => {
     const {id} = useParams()
-    const [event, setEvent] = useState<DetailledEvent | null>(null)
-    useEffect(() => {
-        if(id){
-            axios.get<DetailledEvent>(EVENT_URLS.events + id)
-                .then(({data}) => {
-                    setEvent(data)
-                })
-                .catch(err => console.log(err))
-        }
-    },[id])
-    return event? (
+    const {event, isLoading, error} = useEvent(id!)
+    return isLoading ?
+    (
         <>
-           <Banner imageUrl={''} title={event.title}/>
+            ...Loading
+        </>
+    ): event? 
+    (
+        <>
+           <Banner imageUrl={''} title={event?.title ?? ''}/>
            <EventInfo event={event}/>
 
         </>
-    ): (
+    ) : (
         <>
-            ...Loading
+            
         </>
     )
 }
