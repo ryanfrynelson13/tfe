@@ -22,6 +22,14 @@ export class ReviewEntity{
     })
     comment: string
 
+    @Column({
+        type: 'date',
+        nullable: true,
+        default: new Date(),
+        name: 'created_at'
+    })
+    createdAt: string
+
     @ManyToOne(() => UserEntity, (user) => user.id)
     user: UserEntity
 

@@ -35,6 +35,12 @@ export class UserEntity{
     })
     username: string
 
+    @Column({
+        type:'varchar',
+        nullable: true
+    })
+    avatar: string
+
     @ManyToOne(() => PermissionEntity, (permission) => permission.id)
     permission: PermissionEntity
 

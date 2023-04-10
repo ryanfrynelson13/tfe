@@ -1,11 +1,11 @@
-import { Controller, Patch, Body, Get, Param, UseGuards, Post } from '@nestjs/common';
+import { Controller,Request, Patch, Body, Get, Param, UseGuards, Post, Delete } from '@nestjs/common';
 import { AddFavoriteDto } from 'src/core/dtos/favorites/add-favorite.dto';
 import { AuthGard } from 'src/core/guards/auth.guard';
 import { FavoritesService } from 'src/core/services/favorites/favorites.service';
 
 
 @UseGuards(AuthGard)
-@Controller('users/:userId/favorites')
+@Controller('users/favorites')
 export class FavoritesController {
 
     constructor(
@@ -14,18 +14,27 @@ export class FavoritesController {
 
     @Get('')
     getAllFavorites(
-        @Param('userId') userId: number
+        @Request() req
     ){
+        const userId: number = req.user.id
         return this.favoritesService.findAllFavorites(userId)
     }
     
     @Post('')
     addToFavorites(
-        @Param('userId') userId: number,
+        @Request() req,
         @Body() body: AddFavoriteDto
     ){
+        const userId: number = req.user.id
         return this.favoritesService.addToFavorites(userId, body.eventId)
     }
 
-   
+    @Delete(':eventId')
+    removeFtomFavorites(
+        @Request() req,
+        @Param('eventId') eventId: number
+    ){
+        const userId: number = req.user.id
+        return this.favoritesService.removeFromFavorites(userId, eventId)
+    }   
 }

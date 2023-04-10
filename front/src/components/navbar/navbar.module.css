@@ -15,12 +15,12 @@
 }
 
 .navbar a:hover{
-    background-color: #3b3455;
+    background-color: #0301824e;
 }
 
 a.active {
     color: white;
-    background-color: #36026b;
+    background-color: #01004882;
 }
 
 form{
@@ -55,7 +55,7 @@ form{
     color: white;
     font-size: inherit;
     font-family: inherit;
-    background-color: #230046 ;
+    background-color: #03002e ;
     border: 0.2px solid rgba(255, 255, 255, 0.349);
     padding: 10px;
 }

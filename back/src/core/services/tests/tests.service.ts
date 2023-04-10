@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { NewReviewDto } from 'src/core/dtos/reviews/new-review.dto';
 import { EventEntity } from 'src/core/models/entities/Event.entity';
 import { AddressUserEntity } from 'src/core/models/entities/address-user.entity';
 import { CategoryEntity } from 'src/core/models/entities/category.entity';
@@ -12,7 +13,6 @@ import { TicketPriceEntity } from 'src/core/models/entities/ticket-price.entity'
 import { TicketEntity } from 'src/core/models/entities/ticket.entity';
 import { UserEntity } from 'src/core/models/entities/user.entity';
 import { NewEventType } from 'src/core/types/events/new-event.type';
-import { NewReviewType } from 'src/core/types/reviews/new-review.type';
 import { NewTicketPriceType } from 'src/core/types/tickets/new-ticket-price.type';
 import { NewUserType } from 'src/core/types/users/new-user.type';
 import { Repository } from 'typeorm';
@@ -90,18 +90,18 @@ export class TestsService {
         return this.userAddressRepo.save(newAddress)
     }
 
-    async populateReviews(body: NewReviewType){
+    async populateReviews(body){
 
-        const newReview: ReviewEntity = await this.reviewRepo.create(body.review)
+        // const newReview: ReviewEntity = await this.reviewRepo.create(body.review)
 
-        const user = await this.userRepo.findOne({where:{id: body.userId}})
-        const event = await this.eventRepo.findOne({where:{id: body.eventId}})
+        // const user = await this.userRepo.findOne({where:{id: body.userId}})
+        // const event = await this.eventRepo.findOne({where:{id: body.eventId}})
         
 
-        newReview.user = user
-        newReview.event = event
+        // newReview.user = user
+        // newReview.event = event
 
-        return this.reviewRepo.save(newReview)
+        // return this.reviewRepo.save(newReview)
     }
 
     async populateFavorites(body: {userId: number, eventId: number}){

@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom"
 import { EventType } from "../../../types/events/event.type"
 import classes from './item.module.css'
 
 
-const DropdownItem = ({title, imageUrl}: EventType) => {
+const DropdownItem = ({id,title, imageUrl}: EventType) => {
+
+    const navigate = useNavigate()
+
     return(
-        <li className={classes.item}>
+        <li className={classes.item} onClick={() => navigate(`/event/${id}`)}>
             <div>
                 <img src={imageUrl} alt="" />
             </div>

@@ -1,8 +1,7 @@
-import { Controller, Patch, Body, Get, Param, UseGuards, Request, UseInterceptors, ClassSerializerInterceptor} from '@nestjs/common';
+import { Controller, Patch, Body, Get, UseGuards, Request, UseInterceptors, ClassSerializerInterceptor} from '@nestjs/common';
 import { UsersService } from '../../../core/services/users/users.service';
 import { AuthGard } from 'src/core/guards/auth.guard';
 import { UpdateUserDto } from 'src/core/dtos/users/update-user.dto';
-import { Request as expressRequest } from 'express';
 
 
 @UseGuards(AuthGard)
@@ -17,15 +16,16 @@ export class UsersController {
     @Get()
     getUser(
         @Request() req){
-        const userId = req.user.id
+        const userId: number = req.user.id
         return this.usersService.getOneUser(userId)
     }
 
-    @Patch(':id')
+    @Patch('')
     updateUser(
-        @Param('id') id: number,
+        @Request() req,
         @Body() user: UpdateUserDto
     ){
+        const id: number = req.user.id
         return this.usersService.updateUser(id, user)
     }
    

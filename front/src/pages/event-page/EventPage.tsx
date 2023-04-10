@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { DetailledEvent } from "../../types/events/detailled-event.type"
-import axios from "axios"
-import { EVENT_URLS } from "../../enums/event-urls.enum"
 import Banner from "../../components/banner/Banner"
 import EventInfo from "../../containers/events/event-info/EventInfo"
 import useEvent from "../../hooks/events/useEvent"
@@ -20,8 +16,7 @@ const EventPage = () => {
     (
         <>
            <Banner imageUrl={''} title={event?.title ?? ''}/>
-           <EventInfo event={event}/>
-
+           <EventInfo event={event}/>           
         </>
     ) : (
         <>

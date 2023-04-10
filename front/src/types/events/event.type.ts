@@ -1,3 +1,4 @@
+import { Review } from "../reviews/review.type"
 import { TicketPrice } from "../ticket-prices/ticket-price.type"
 
 export type EventType = {

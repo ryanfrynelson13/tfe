@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBasketShopping, faUser} from '@fortawesome/free-solid-svg-icons'
 import { useRecoilValue } from 'recoil'
 import { userAtom } from '../../atoms/user.atom'
+import UserMenu from '../user-menu/UserMenu'
 
 
 const Navbar = () => {
@@ -18,6 +19,12 @@ const Navbar = () => {
     const [search, setSearch] = useState<string>('')
     const [inputFocus, setInputFocus] = useState<boolean>(false)
     const {events} = useSearch(search,'6')
+
+    const handleBlur = () => {
+        setTimeout(()=> {
+            setInputFocus(false)
+        }, 100)
+    }
 
     return (
         <nav className={classes.navbar}>
@@ -50,7 +57,7 @@ const Navbar = () => {
                 <div className={classes.search}>
                     <form>
                         <div>
-                            <input onFocus={() => setInputFocus(true)} onBlur={() => setInputFocus(false)} type="text" autoComplete='off' name="search" id="search" placeholder='Events...' value={search} onChange={(e) => setSearch(e.target.value)}/>
+                            <input onFocus={() => setInputFocus(true)} onBlur={handleBlur} type="text" autoComplete='off' name="search" id="search" placeholder='Events...' value={search} onChange={(e) => setSearch(e.target.value)}/>
                             <button type='submit'>Search</button>
                         </div>
                         {events.length > 0 && inputFocus && <Dropdown items={events}/>}
@@ -71,17 +78,8 @@ const Navbar = () => {
                 <div className={classes.icon}>
                     {
                         user ?  
-                        <FontAwesomeIcon
-                            style={{
-                                borderRadius: '50%',
-                                cursor: 'pointer',
-                                fontSize: '1.8rem',
-                                padding: '6px 12px'
-                            }} 
-                            border={true}
-                            icon={faUser}
-                            onClick={() => navigate('/user/profile')}
-                        />:
+                        <UserMenu />
+                        :
                         <p onClick={() => navigate('/auth/login')}>Login</p>
                     }
                    

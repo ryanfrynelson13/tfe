@@ -1,3 +1,5 @@
 export enum USERS_URLS {
-    users = 'http://localhost:3000/users/'
+    users = 'http://localhost:3000/users/',
+    favorites = 'http://localhost:3000/users/favorites/',
+    reviews = 'http://localhost:3000/reviews/'
 }

@@ -16,7 +16,7 @@ h1{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #23004668;
+    background-color: #03002eb2;
 }
 
 .signup-page p{
@@ -31,7 +31,7 @@ h1{
 a.login:hover
 a.login:active,
 a.login:visited{
-    color: #6220a3;
+    color:  	#090088;
 }
 @media (max-width: 769px) {
     .signup-form{

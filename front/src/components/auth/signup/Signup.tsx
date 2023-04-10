@@ -44,7 +44,6 @@ const Signup = () => {
 
         axios.post('http://localhost:3000/auth/register',body)
             .then(res => {
-                console.log(res.data)
                 localStorage.setItem('access_token', JSON.stringify(res.data.access_token))
                 navigate('/')
             })

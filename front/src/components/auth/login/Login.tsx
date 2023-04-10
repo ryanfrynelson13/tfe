@@ -20,7 +20,6 @@ const Login = () => {
         email,
         password
       })
-      console.log(data)
       localStorage.setItem('access_token', JSON.stringify(data.access_token))
       navigate('/')
     } catch (error) {

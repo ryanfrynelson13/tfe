@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
 
-const basketAtom = atom({
+export const basketAtom = atom({
     key: 'basket',
     default: {
         products: [],
