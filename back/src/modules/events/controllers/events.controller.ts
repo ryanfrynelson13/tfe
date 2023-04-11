@@ -11,21 +11,24 @@ export class EventsController {
     ){}
 
     @Get()
-    async getAllEvents(
-        @Query('limit') limit: number
+    getAllEvents(
+        @Query('limit') limit: number,
+        @Query('page') page: number,        
     ){
-        const allEvents = await this.eventsService.findAllEvents(limit)
+       return this.eventsService.findAllEvents(limit, page)      
+    }
 
-        return allEvents
+    @Get('count')
+    getEventsCount(){
+        return this.eventsService.findEventsCount()
     }
 
     @Get('search')
-    async getSearchedEvents(
+   getSearchedEvents(
         @Query('q') q: string,
         @Query('limit') limit: number
     ){
-        const searchedEvents = await this.eventsService.findSearchedEvents(q, limit)
-        return searchedEvents
+        return this.eventsService.findSearchedEvents(q, limit)        
     }
 
     @Get(':id')

@@ -15,7 +15,7 @@ export class EventsService {
         @InjectRepository(EventLocationEntity) private locationRepo: Repository<EventLocationEntity>,
     ){}
 
-    async findAllEvents(limit: number) {
+    async findAllEvents(limit: number, page: number) {
         const allEvents = await this.eventRepo.find({
             where: {
                 endDate: MoreThan(new Date().toISOString())
@@ -28,11 +28,20 @@ export class EventsService {
                 id:true,
                 title:true,
                 imageUrl:true,
+                startDate: true
             },
-            take: limit
+            take: limit,
+            skip: limit * page-1,
+            order: {
+                startDate: 'ASC'
+            }
         })
 
         return allEvents
+    }
+
+    async findEventsCount() {
+        return this.eventRepo.count({})
     }
 
     async findSearchedEvents(q: string, limit: number) {
@@ -50,7 +59,7 @@ export class EventsService {
                 title:true,
                 imageUrl:true,
             },
-            take: limit
+            take: limit,
         })
 
         return allEvents

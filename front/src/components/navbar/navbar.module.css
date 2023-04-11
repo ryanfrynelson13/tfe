@@ -72,3 +72,11 @@ form{
     align-items: center;
     cursor: pointer;
 }
+
+
+
+.logo{
+    object-fit: cover;
+    width: 6vw;
+    height: auto;
+}

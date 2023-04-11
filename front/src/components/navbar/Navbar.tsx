@@ -9,7 +9,7 @@ import { faBasketShopping, faUser} from '@fortawesome/free-solid-svg-icons'
 import { useRecoilValue } from 'recoil'
 import { userAtom } from '../../atoms/user.atom'
 import UserMenu from '../user-menu/UserMenu'
-
+import logo from '../../assets/images/ES_Logo.png'
 
 const Navbar = () => {
 
@@ -29,8 +29,11 @@ const Navbar = () => {
     return (
         <nav className={classes.navbar}>
             <div>
-                <NavLink to={''}>
-                    ES
+                <NavLink style={{
+                    width: '8vw',
+                    height: '10vh'
+                }} to={''}>
+                    <img className={classes.logo} src={logo} alt="" />
                 </NavLink>
             </div>
             <div>

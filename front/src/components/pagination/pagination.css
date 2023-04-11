@@ -1,0 +1,12 @@
+.MuiPagination-root button{
+    color: white !important;
+}
+
+.MuiPagination-root li >div{
+    color: white !important;
+}
+
+.page{
+    width: 25vw;
+    margin: 4ch auto;
+}

@@ -5,6 +5,7 @@ export type EventType = {
     id: number
     title: string
     imageUrl: string
+    startDate: string
     tickets: TicketPrice[]
     reviews: Review[]
 }

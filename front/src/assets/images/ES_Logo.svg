@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="687" height="357" viewBox="0 0 687 357">
+  <defs>
+    <clipPath id="clip-Plan_de_travail_2">
+      <rect width="687" height="357"/>
+    </clipPath>
+  </defs>
+  <g id="Plan_de_travail_2" data-name="Plan de travail – 2" clip-path="url(#clip-Plan_de_travail_2)">
+    <g id="Groupe_5" data-name="Groupe 5" transform="translate(-10 -122)">
+      <text id="E" transform="translate(90 348)" fill="#fff" font-size="300" font-family="MontserratAlternates-Regular, Montserrat Alternates"><tspan x="0" y="0">E</tspan></text>
+      <text id="S" transform="translate(286 431)" fill="#fff" font-size="300" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">S</tspan></text>
+      <text id="vent" transform="translate(100 403)" fill="#fff" font-size="78" font-family="MontserratAlternates-Regular, Montserrat Alternates"><tspan x="0" y="0">vent</tspan></text>
+      <text id="cene" transform="translate(445 403)" fill="#fff" font-size="78" font-family="MontserratAlternates-Regular, Montserrat Alternates"><tspan x="0" y="0">cene</tspan></text>
+      <path id="Tracé_1" data-name="Tracé 1" d="M6968.448,8167.935H6721.213V7921.5H6773v5h-46.787v236.435h242.234Z" transform="translate(-6690 -7735)" fill="#fff"/>
+      <path id="Tracé_2" data-name="Tracé 2" d="M7358.161,8167.935H7134.434v-5h218.727V7926.5H6979v-5h379.161Z" transform="translate(-6690 -7735)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

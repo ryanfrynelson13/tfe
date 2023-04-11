@@ -16,7 +16,8 @@ export class CategoryEntity{
 
     @Column({
         type:'varchar',
-        name: 'image_url'
+        name: 'image_url',
+        nullable: true
     })
     imageUrl: string
 
