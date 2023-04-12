@@ -8,5 +8,6 @@
 
 .page{
     width: 25vw;
-    margin: 4ch auto;
+    margin: 0 auto;
+    padding: 4ch 0
 }

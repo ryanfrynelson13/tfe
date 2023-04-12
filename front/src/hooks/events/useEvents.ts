@@ -3,17 +3,24 @@ import axios from 'axios'
 import { EVENT_URLS } from "../../enums/event-urls.enum"
 import { EventType } from "../../types/events/event.type"
 
-const useEvents = (limit: string, page: number) => {
+const useEvents = (limit: number, page: number, sortBy: string) => {
     const [isLoading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<unknown>(null)
     const [events, setEvents] = useState<EventType[]>([])
 
     useEffect(() => {
         getEvents()
-    },[page])
+    },[page, limit,sortBy])
     let getEvents = async() => {
         try {
-            const {data} = await axios.get<EventType[]>(EVENT_URLS.events +'?limit=' + limit + '&page=' + page)
+            const params = {
+                limit,
+                page,
+                sortBy
+            }
+            const {data} = await axios.get<EventType[]>(EVENT_URLS.events, {
+                params: params
+            })
             setLoading(false)
             setEvents(data)
         } catch (error) {

@@ -15,27 +15,66 @@ export class EventsService {
         @InjectRepository(EventLocationEntity) private locationRepo: Repository<EventLocationEntity>,
     ){}
 
-    async findAllEvents(limit: number, page: number) {
-        const allEvents = await this.eventRepo.find({
-            where: {
-                endDate: MoreThan(new Date().toISOString())
-            },
-            relations:{
-                tickets: true,
-                reviews: true
-            },
-            select:{
-                id:true,
-                title:true,
-                imageUrl:true,
-                startDate: true
-            },
-            take: limit,
-            skip: limit * page-1,
-            order: {
-                startDate: 'ASC'
+    async findAllEvents(limit: number, page: number, sortBy: string) {
+        let allEvents
+        if(sortBy == 'date'){
+            allEvents = await this.eventRepo.find({
+                where: {
+                    endDate: MoreThan(new Date().toISOString())
+                },
+                relations:{
+                    tickets: true,
+                    reviews: true
+                },
+                select:{
+                    id:true,
+                    title:true,
+                    imageUrl:true,
+                    startDate: true
+                },
+                take: limit,
+                skip: limit * (page-1),
+                order: {
+                    startDate: 'ASC'
+                }
+            })
+        } else{
+            allEvents = allEvents = await this.eventRepo.find({
+                where: {
+                    endDate: MoreThan(new Date().toISOString())
+                },
+                relations:{
+                    tickets: true,
+                    reviews: true
+                },
+                select:{
+                    id:true,
+                    title:true,
+                    imageUrl:true,
+                    startDate: true
+                }
+            })
+            if(sortBy == 'price'){
+                for(const event of allEvents){                    
+                    let prices: number[] = []
+                    for(const ticket of event.tickets){
+                        prices.push(ticket.pricePerTicket)
+                    }
+                    event.lowPrice = Math.min(...prices)                    
+                }
+
+                allEvents = allEvents.sort((a, b) => a.lowPrice > b.lowPrice ? 1 : -1)
+            } else {
+                for(const event of allEvents){
+                    event.starsAvg = event.reviews.length >0 ? event.reviews.reduce((total, {stars}) => {
+                        return  total + stars
+                    }, 0)/ event.reviews.length : 0
+                }
+                allEvents = allEvents.sort((a, b) => a.starsAvg < b.starsAvg ? 1 : -1)
             }
-        })
+
+            allEvents = allEvents.slice(limit *( page -1), limit * page)
+        }
 
         return allEvents
     }

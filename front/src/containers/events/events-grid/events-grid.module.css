@@ -7,3 +7,11 @@
     row-gap: 4ch;
     column-gap: 2ch;
 }
+
+.options{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto 2ch auto
+}

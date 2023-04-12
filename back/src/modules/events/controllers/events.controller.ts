@@ -14,8 +14,9 @@ export class EventsController {
     getAllEvents(
         @Query('limit') limit: number,
         @Query('page') page: number,        
+        @Query('sortBy') sortBy: string,        
     ){
-       return this.eventsService.findAllEvents(limit, page)      
+       return this.eventsService.findAllEvents(limit, page, sortBy)      
     }
 
     @Get('count')

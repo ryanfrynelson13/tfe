@@ -1,0 +1,7 @@
+.MuiFormControl-root fieldset{
+    border-color: white;
+}
+
+.MuiFormControl-root:hover fieldset{
+    border-color: white !important;
+}

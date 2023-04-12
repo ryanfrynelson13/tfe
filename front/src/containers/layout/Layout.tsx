@@ -7,6 +7,7 @@ import { userAtom } from "../../atoms/user.atom"
 import axios from "axios"
 import { USERS_URLS } from "../../enums/users-urls.enum"
 import { User } from "../../types/users/user.type"
+import Filters from "../../components/filters/Filters"
 
 type LayoutProps = {
     children: React.ReactNode
@@ -36,6 +37,7 @@ const Layout = ({children}: LayoutProps) => {
 
     return(
         <div className={classes.layout}>
+            <Filters display={true}/>
             <Header />
             <main>
                 {children}
