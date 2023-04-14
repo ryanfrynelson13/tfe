@@ -2,15 +2,18 @@ import { useEffect, useState } from "react"
 import axios from 'axios'
 import { EVENT_URLS } from "../../enums/event-urls.enum"
 import { EventType } from "../../types/events/event.type"
+import { useRecoilValue } from "recoil"
+import { filtersAtom } from "../../atoms/filters.atom"
 
 const useEvents = (limit: number, page: number, sortBy: string) => {
     const [isLoading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<unknown>(null)
     const [events, setEvents] = useState<EventType[]>([])
+    const filters = useRecoilValue(filtersAtom)
 
     useEffect(() => {
         getEvents()
-    },[page, limit,sortBy])
+    },[page, limit,sortBy, filters])
     let getEvents = async() => {
         try {
             const params = {
@@ -18,7 +21,9 @@ const useEvents = (limit: number, page: number, sortBy: string) => {
                 page,
                 sortBy
             }
-            const {data} = await axios.get<EventType[]>(EVENT_URLS.events, {
+            const {data} = await axios.post<EventType[]>(EVENT_URLS.events,{
+                ...filters
+            } ,{
                 params: params
             })
             setLoading(false)

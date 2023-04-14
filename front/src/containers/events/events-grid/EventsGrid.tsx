@@ -3,23 +3,20 @@ import EventCard from "../../../components/event/event-card/EventCard"
 import useEvents from "../../../hooks/events/useEvents"
 import { EventType } from "../../../types/events/event.type"
 import classes from './events-grid.module.css'
-import { getEventsCount } from "../../../api/events/events-count"
 import Pagination from "../../../components/pagination/Pagination"
 import SortBy from "../../../components/sort-by/SortBy"
+import useEventCount from "../../../hooks/events/useEventCount"
 
 
 const EventsGrid = () => {   
     
-    const [eventCount, setEventCount] = useState<number>(0)
+    const eventCount = useEventCount()
     const [page, setPage] = useState<number>(1)
     const [orderBy, setOrderBy] = useState('date')
     
     const {isLoading, events, error} = useEvents(24, page, orderBy)    
 
-    useEffect(() => {
-        getEventsCount()
-            .then(count => setEventCount(count))
-    },[])
+    
 
     const changePage = (page: number) => {
         setPage(page)

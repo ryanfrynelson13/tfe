@@ -4,7 +4,7 @@ import FormLabel from '@mui/material/FormLabel';
 import { useRecoilState} from 'recoil';
 import { filtersAtom } from '../../../atoms/filters.atom';
 import { Checkbox, FormGroup } from '@mui/material';
-import classes from './categories-filter.module.css'
+import  './categories-filter.css'
 
 const CategoriesFilter = () => {
 
@@ -21,9 +21,9 @@ const CategoriesFilter = () => {
         return filters.categories.some(cat => cat === value)
     }
     return(
-        <div className={classes.categories}>
+        <div className='categories'>
             <FormControl>
-                <FormLabel id="categories" sx={{color: 'white', fontFamily: 'inherit', fontSize:'1.2rem', marginBottom: '1ch'}}>Categories</FormLabel>
+                <FormLabel id="categories" sx={{color: 'white', fontFamily: 'inherit', fontSize:'1.4rem', marginBottom: '1ch', fontWeight:'bold'}}>Categories</FormLabel>
                 <FormGroup>
                     <FormControlLabel value={1} control={<Checkbox color='secondary' onChange={handleCheck} checked={isChecked(1)} />} label="Concerts" />
                     <FormControlLabel value={2} control={<Checkbox color='secondary' onChange={handleCheck} checked={isChecked(2)} />} label="Festivals" />

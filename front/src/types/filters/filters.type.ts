@@ -1,5 +1,5 @@
 type Filters = {
     categories: number[]
-    priceRange: [number, number] | []
+    priceRange: number[]
     lowestStars: number
 }

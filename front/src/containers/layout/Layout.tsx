@@ -2,7 +2,7 @@ import Footer from "../footer/Footer"
 import Header from "../header/Header"
 import classes from './layout.module.css'
 import { useEffect } from "react"
-import { useRecoilState } from "recoil"
+import { useRecoilState, useSetRecoilState } from "recoil"
 import { userAtom } from "../../atoms/user.atom"
 import axios from "axios"
 import { USERS_URLS } from "../../enums/users-urls.enum"
@@ -18,7 +18,7 @@ type LayoutProps = {
 const Layout = ({children}: LayoutProps) => {
 
     const [user, setUser] = useRecoilState(userAtom)
-    const [filters, setFilters] = useRecoilState(filtersAtom)
+    const setFilters = useSetRecoilState(filtersAtom)
     
     useEffect(() => {
         if(!user){

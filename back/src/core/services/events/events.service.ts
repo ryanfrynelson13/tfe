@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { updateEventDto } from 'src/core/dtos/events/update-event.dto';
 import { EventEntity } from 'src/core/models/entities/Event.entity';
 import { CategoryEntity } from 'src/core/models/entities/category.entity';
 import { EventLocationEntity } from 'src/core/models/entities/event-location.entity';
 import { EventType } from 'src/core/types/events/event.type';
+import { FiltersType } from 'src/core/types/events/filters.type';
 import { NewEventType } from 'src/core/types/events/new-event.type';
-import { addAvgStars, addLowestPrice, filterEvents } from 'src/core/utils/events.util';
-import { ILike, Like, MoreThan, Repository } from 'typeorm';
+import {filterEvents } from 'src/core/utils/events.util';
+import { ILike, MoreThan, Repository } from 'typeorm';
 
 @Injectable()
 export class EventsService {
@@ -17,9 +17,9 @@ export class EventsService {
         @InjectRepository(EventLocationEntity) private locationRepo: Repository<EventLocationEntity>,
     ){}
 
-    async findAllEvents(limit: number, page: number, sortBy: string) {
+    async findAllEvents(limit: number, page: number, sortBy: string, filters: FiltersType) {
         let allEvents: EventType[]
-      
+        const {categories, priceRange, lowestStars} = filters
         allEvents = await this.eventRepo.find({
             where: {
                 endDate: MoreThan(new Date().toISOString())               
@@ -39,7 +39,7 @@ export class EventsService {
                 startDate: 'ASC'
             } : {}
         })
-        allEvents = filterEvents(allEvents, [1, 2, 4, 5, 6], [15, 100.20], 1.5)        
+        allEvents = filterEvents(allEvents, categories, priceRange, lowestStars)        
         
 
         if(sortBy == 'price'){
@@ -53,12 +53,17 @@ export class EventsService {
         return allEvents
     }
 
-    async findEventsCount() {
+    async findEventsCount( filters: FiltersType) {
+        const {categories, priceRange, lowestStars} = filters
         let events: EventType[]  = await this.eventRepo.find({ where: {
             endDate: MoreThan(new Date().toISOString())                
+        },relations:{
+            tickets: true,
+            reviews: true,
+            category: true
         }})
 
-        events = filterEvents(events, [1, 2, 4, 5, 6], [15, 100.20], 1.5)
+        events = filterEvents(events, categories, priceRange, lowestStars)
 
         return events.length
     }
