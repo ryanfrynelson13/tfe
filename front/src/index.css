@@ -4,6 +4,10 @@ body{
     background-color: #191528 ;
     color: white;
     font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#root{
     position: relative;
+    overflow: auto;
 }
 

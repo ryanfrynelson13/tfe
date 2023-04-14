@@ -3,7 +3,9 @@ import Navbar from "../../components/navbar/Navbar"
 const Header = () => {
 
     return(
-        <header>
+        <header style={{
+            position: 'relative'
+        }}>
            <Navbar />
         </header>
     )

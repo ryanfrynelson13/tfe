@@ -4,8 +4,10 @@ import { updateEventDto } from 'src/core/dtos/events/update-event.dto';
 import { EventEntity } from 'src/core/models/entities/Event.entity';
 import { CategoryEntity } from 'src/core/models/entities/category.entity';
 import { EventLocationEntity } from 'src/core/models/entities/event-location.entity';
+import { EventType } from 'src/core/types/events/event.type';
 import { NewEventType } from 'src/core/types/events/new-event.type';
-import { Like, MoreThan, Repository } from 'typeorm';
+import { addAvgStars, addLowestPrice, filterEvents } from 'src/core/utils/events.util';
+import { ILike, Like, MoreThan, Repository } from 'typeorm';
 
 @Injectable()
 export class EventsService {
@@ -16,78 +18,56 @@ export class EventsService {
     ){}
 
     async findAllEvents(limit: number, page: number, sortBy: string) {
-        let allEvents
-        if(sortBy == 'date'){
-            allEvents = await this.eventRepo.find({
-                where: {
-                    endDate: MoreThan(new Date().toISOString())
-                },
-                relations:{
-                    tickets: true,
-                    reviews: true
-                },
-                select:{
-                    id:true,
-                    title:true,
-                    imageUrl:true,
-                    startDate: true
-                },
-                take: limit,
-                skip: limit * (page-1),
-                order: {
-                    startDate: 'ASC'
-                }
-            })
-        } else{
-            allEvents = allEvents = await this.eventRepo.find({
-                where: {
-                    endDate: MoreThan(new Date().toISOString())
-                },
-                relations:{
-                    tickets: true,
-                    reviews: true
-                },
-                select:{
-                    id:true,
-                    title:true,
-                    imageUrl:true,
-                    startDate: true
-                }
-            })
-            if(sortBy == 'price'){
-                for(const event of allEvents){                    
-                    let prices: number[] = []
-                    for(const ticket of event.tickets){
-                        prices.push(ticket.pricePerTicket)
-                    }
-                    event.lowPrice = Math.min(...prices)                    
-                }
+        let allEvents: EventType[]
+      
+        allEvents = await this.eventRepo.find({
+            where: {
+                endDate: MoreThan(new Date().toISOString())               
+            },
+            relations:{
+                tickets: true,
+                reviews: true,
+                category: true
+            },
+            select:{
+                id:true,
+                title:true,
+                imageUrl:true,
+                startDate: true
+            },
+            order: sortBy == 'date' ?{
+                startDate: 'ASC'
+            } : {}
+        })
+        allEvents = filterEvents(allEvents, [1, 2, 4, 5, 6], [15, 100.20], 1.5)        
+        
 
-                allEvents = allEvents.sort((a, b) => a.lowPrice > b.lowPrice ? 1 : -1)
-            } else {
-                for(const event of allEvents){
-                    event.starsAvg = event.reviews.length >0 ? event.reviews.reduce((total, {stars}) => {
-                        return  total + stars
-                    }, 0)/ event.reviews.length : 0
-                }
-                allEvents = allEvents.sort((a, b) => a.starsAvg < b.starsAvg ? 1 : -1)
-            }
-
-            allEvents = allEvents.slice(limit *( page -1), limit * page)
+        if(sortBy == 'price'){
+            allEvents = allEvents.sort((a, b) => a.lowestPrice > b.lowestPrice ? 1 : -1)
+        } 
+        if(sortBy == 'stars') {
+            allEvents = allEvents.sort((a, b) => a.avgStars < b.avgStars ? 1 : -1)
         }
+        allEvents = allEvents.slice(limit *( page -1), limit * page)
 
         return allEvents
     }
 
     async findEventsCount() {
-        return this.eventRepo.count({})
+        let events: EventType[]  = await this.eventRepo.find({ where: {
+            endDate: MoreThan(new Date().toISOString())                
+        }})
+
+        events = filterEvents(events, [1, 2, 4, 5, 6], [15, 100.20], 1.5)
+
+        return events.length
     }
 
     async findSearchedEvents(q: string, limit: number) {
         const allEvents = await this.eventRepo.find({
             where: {
                 endDate: MoreThan(new Date().toISOString()),
-                title: Like(`%${q}%`)
+                title: ILike(`%${q}%`)
             },
             relations:{
                 tickets: true,

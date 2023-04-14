@@ -6,7 +6,6 @@ import classes from './events-grid.module.css'
 import { getEventsCount } from "../../../api/events/events-count"
 import Pagination from "../../../components/pagination/Pagination"
 import SortBy from "../../../components/sort-by/SortBy"
-import Filters from "../../../components/filters/Filters"
 
 
 const EventsGrid = () => {   
@@ -50,7 +49,7 @@ const EventsGrid = () => {
             <div className={classes.grid}>
                 {eventsMap}
             </div>  
-            <Pagination onPage={changePage} count={eventCount}/>         
+            {eventCount > 1 && <Pagination onPage={changePage} count={eventCount}/>}       
         </>
     )
 }

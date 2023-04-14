@@ -7,7 +7,9 @@ import { userAtom } from "../../atoms/user.atom"
 import axios from "axios"
 import { USERS_URLS } from "../../enums/users-urls.enum"
 import { User } from "../../types/users/user.type"
-import Filters from "../../components/filters/Filters"
+import Filters from "../filters/Filters"
+import { EVENT_URLS } from "../../enums/event-urls.enum"
+import { filtersAtom } from "../../atoms/filters.atom"
 
 type LayoutProps = {
     children: React.ReactNode
@@ -16,7 +18,7 @@ type LayoutProps = {
 const Layout = ({children}: LayoutProps) => {
 
     const [user, setUser] = useRecoilState(userAtom)
-    
+    const [filters, setFilters] = useRecoilState(filtersAtom)
     
     useEffect(() => {
         if(!user){
@@ -33,7 +35,14 @@ const Layout = ({children}: LayoutProps) => {
                     })
             }
         }
-    })
+    }) 
+    
+    useEffect(() => {
+        axios.get<[number, number]>(EVENT_URLS.priceRange)
+            .then(({data}) => setFilters(filters => ({...filters, priceRange: data})))
+    },[])
+
+    
 
     return(
         <div className={classes.layout}>
