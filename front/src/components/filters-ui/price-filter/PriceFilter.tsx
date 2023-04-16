@@ -3,14 +3,15 @@ import './price-filter.css'
 import { filtersAtom } from '../../../atoms/filters.atom'
 import { Slider } from '@mui/material'
 import usePriceRange from '../../../hooks/events/usePriceRange'
+import { FiltersProps } from '../../../types/filters/filters-props.type'
 
-const PriceFilter = () => {
-    const [{priceRange},setFilters] = useRecoilState(filtersAtom)
+const PriceFilter = ({filters, onFilters}: FiltersProps) => {
     const defaultRange = usePriceRange()
 
     const handleChange = (event: Event, newValue: number | number[]) => {
         if(Array.isArray(newValue)){
-            setFilters(filters => ({...filters, priceRange: [...newValue]}))
+            const newFilters = {...filters, priceRange: [...newValue]}
+            onFilters(newFilters)
         }
     }
     return(
@@ -19,7 +20,7 @@ const PriceFilter = () => {
             <div className='slider'>
                 <Slider
                     getAriaLabel={() => 'price range'}
-                    value={priceRange}
+                    value={filters.priceRange}
                     min={defaultRange[0]}
                     max={defaultRange[1]}
                     onChange={handleChange}

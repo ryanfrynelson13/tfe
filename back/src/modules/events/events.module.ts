@@ -3,9 +3,10 @@ import { EventsController } from './controllers/events.controller';
 import { CoreModule } from 'src/core/core.module';
 import { CategoriesController } from './controllers/categories.controller';
 import { ticketscontroller } from './controllers/tickets.controller';
+import { SessionsController } from './controllers/sessions.controller';
 
 @Module({
   imports: [CoreModule],
-  controllers: [EventsController, CategoriesController, ticketscontroller]
+  controllers: [EventsController, CategoriesController, ticketscontroller, SessionsController]
 })
 export class EventsModule {}

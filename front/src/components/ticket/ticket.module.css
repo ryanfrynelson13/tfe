@@ -1,0 +1,35 @@
+.ticket{
+    color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: inherit;
+    font-size: 1.2rem;
+    background-color: rgba(102, 102, 242, 0.251);
+    padding: 0 1ch;
+    border: 1px solid rgba(255, 255, 255, 0.388);
+}
+
+.ticket p {
+    width: 40%;
+    color: #03002e
+}
+
+.change-nb{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.change-nb p {
+    text-align: center;
+}
+
+.change-nb button{
+    padding: 1ch;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.195);
+    background-color: rgba(102, 102, 242, 0.251);
+    cursor: pointer;
+}

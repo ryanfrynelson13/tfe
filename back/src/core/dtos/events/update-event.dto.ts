@@ -28,8 +28,8 @@ export class updateEventDto {
     description: string 
 
     @IsOptional()
-    @IsString()
-    duration: string
+    @IsInt()
+    duration: number
 
     @IsOptional()
     @IsInt()

@@ -9,7 +9,7 @@ export type EventType = {
     endDate: string
     intro: string 
     description: string 
-    duration: string
+    duration: number
     places: number
     lowestPrice?: number
     avgStars?: number

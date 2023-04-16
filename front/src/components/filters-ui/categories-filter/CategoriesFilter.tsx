@@ -1,20 +1,18 @@
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { useRecoilState} from 'recoil';
-import { filtersAtom } from '../../../atoms/filters.atom';
 import { Checkbox, FormGroup } from '@mui/material';
 import  './categories-filter.css'
+import { FiltersProps } from '../../../types/filters/filters-props.type';
 
-const CategoriesFilter = () => {
 
-    const [filters, setFilters] = useRecoilState(filtersAtom)
+const CategoriesFilter = ({filters, onFilters}: FiltersProps) => {
 
     const handleCheck = (e:React.ChangeEvent<HTMLInputElement>) => {
         const catId = e.target.value
         const checked = e.target.checked
-        console.log(catId, checked)
-        setFilters(filters => ({...filters, categories: checked? [...filters.categories, +catId] :  filters.categories.filter(cat => cat !== +catId)}))
+        const newFilters = {...filters, categories: checked? [...filters.categories, +catId] :  filters.categories.filter(cat => cat !== +catId)}
+        onFilters(newFilters)
     }
 
     const isChecked = (value: number) => {

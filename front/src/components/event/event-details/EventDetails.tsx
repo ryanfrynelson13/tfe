@@ -30,7 +30,7 @@ const EventDetails = ({startDate, endDate, location, category, duration, places}
                 </li>
                 <li>
                     <p>Duration:</p>  
-                    <p className={classes.bold}>{duration}</p>
+                    <p className={classes.bold}>{duration} minutes</p>
                 </li>
                 <li>
                     <p>Places:</p>  

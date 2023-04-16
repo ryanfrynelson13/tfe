@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { NewReviewDto } from 'src/core/dtos/reviews/new-review.dto';
 import { EventEntity } from 'src/core/models/entities/Event.entity';
 import { AddressUserEntity } from 'src/core/models/entities/address-user.entity';
 import { CategoryEntity } from 'src/core/models/entities/category.entity';
@@ -15,6 +14,7 @@ import { UserEntity } from 'src/core/models/entities/user.entity';
 import { NewEventType } from 'src/core/types/events/new-event.type';
 import { NewTicketPriceType } from 'src/core/types/tickets/new-ticket-price.type';
 import { NewUserType } from 'src/core/types/users/new-user.type';
+import { createSessionsDates } from 'src/core/utils/sessions.utils';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -34,6 +34,20 @@ export class TestsService {
         @InjectRepository(TicketEntity) private ticketRepo: Repository<TicketEntity>
 
     ){}
+
+    async changeDuration() {
+        const durations = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200]
+
+        const allEvents = await this.eventRepo.find({})
+
+        for(const event of allEvents){
+            event.duration = durations[Math.floor(Math.random() * durations.length)]
+
+            await this.eventRepo.save(event)
+        }
+
+        return 'done'
+    }
 
     async populateLocation(location){
         const newLocation = await this.locationRepo.create(location)
@@ -124,6 +138,11 @@ export class TestsService {
         session.event = event
 
         return this.sessionRepo.save(session)
+    }
+
+    async createSession () {
+        // const test = createSessionsDates()
+        // return test
     }
 
     async populatePrices(body: NewTicketPriceType){

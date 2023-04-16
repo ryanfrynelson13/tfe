@@ -1,0 +1,6 @@
+.tickets{
+    width: 60vw;
+    margin: 4ch auto;
+    display: flex;
+    justify-content: space-around;
+}

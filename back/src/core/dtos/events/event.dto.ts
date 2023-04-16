@@ -23,8 +23,8 @@ export class EventDto {
     @IsString()
     description: string 
 
-    @IsString()
-    duration: string
+    @IsInt()
+    duration: number
 
     @IsInt()
     places: number

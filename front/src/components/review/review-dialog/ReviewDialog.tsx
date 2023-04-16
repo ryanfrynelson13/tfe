@@ -33,10 +33,6 @@ const ReviewDialog = ({currStars, currComment, update}: ReviewDialogProps) => {
     setStars(newValue)
   }
 
-  const handleUpdate = () => {
-
-  }
-
   return (
     <>
       <Button variant="text" color='inherit' onClick={handleClickOpen}>

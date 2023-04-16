@@ -10,6 +10,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { useState } from "react"
+import BuyTickets from "../../buy-tickets/BuyTickets"
 
 type EventInfoProps = {
     event: DetailledEvent
@@ -34,7 +35,7 @@ const EventInfo = ({event}:EventInfoProps) => {
                     </TabList>
                     </Box>
                     <TabPanel value="1"><EventDescription {...event} onReviews={handleChange}/></TabPanel>
-                    <TabPanel value="2">Buy Tickets</TabPanel>
+                    <TabPanel value="2"><BuyTickets sessions={event.sessions} tickets={event.tickets}/></TabPanel>
                     <TabPanel value="3"><Reviews reviews={event.reviews} eventId={event.id}/></TabPanel>
                 </TabContext>
             </Box>             

@@ -2,7 +2,6 @@ import { EventType } from "../types/events/event.type"
 
 export const addLowestPrice = (event: EventType) => {               
     let prices: number[] = []
-    console.log(event)
     for(const ticket of event.tickets){
         prices.push(ticket.pricePerTicket)
     }

@@ -8,15 +8,15 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    border-right: 1px solid white;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
+    border-right: 1px solid rgba(255, 255, 255, 0.489);
+    border-top: 1px solid rgba(255, 255, 255, 0.489);
+    border-left: 1px solid rgba(255, 255, 255, 0.489);
 }
 
 .details li {
     height: 8vh;
     font-size: 1.6rem;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.489);
     padding: 1ch;
     display: flex;
     align-items: center;

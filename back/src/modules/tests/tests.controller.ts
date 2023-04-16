@@ -21,6 +21,11 @@ export class TestsController {
         private readonly testsService: TestsService
     ){}
 
+    @Post('duration')
+    createSession(){
+        return this.testsService.changeDuration()
+    }
+
     @Post('categories')
     async populateCategories(
         @Body() body: any
@@ -45,9 +50,9 @@ export class TestsController {
     async populateEvents(
         @Body() body: any
     ){
-        for(const event of events){
-            await this.testsService.populateEvent(event)
-        }
+        // for(const event of events){
+        //     await this.testsService.populateEvent(event)
+        // }
         return 'done'
     }
 

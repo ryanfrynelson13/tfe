@@ -7,6 +7,7 @@ import { EventType } from 'src/core/types/events/event.type';
 import { FiltersType } from 'src/core/types/events/filters.type';
 import { NewEventType } from 'src/core/types/events/new-event.type';
 import {filterEvents } from 'src/core/utils/events.util';
+import { sortDates } from 'src/core/utils/sessions.utils';
 import { ILike, MoreThan, Repository } from 'typeorm';
 
 @Injectable()
@@ -95,13 +96,17 @@ export class EventsService {
             relations:[
                 'location',
                 'category',
-                'reviews.user'
+                'reviews.user',
+                'sessions',
+                'tickets'
             ]
         })
 
         if(!event){
             throw new NotFoundException('event not found')
         }
+
+        event.sessions = sortDates(event.sessions)
 
         return event
     }

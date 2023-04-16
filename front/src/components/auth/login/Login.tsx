@@ -21,7 +21,7 @@ const Login = () => {
         password
       })
       localStorage.setItem('access_token', JSON.stringify(data.access_token))
-      navigate('/')
+      navigate(-1)
     } catch (error) {
      console.log(error) 
     }

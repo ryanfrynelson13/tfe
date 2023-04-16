@@ -51,9 +51,10 @@ export class EventEntity {
     description: string 
 
     @Column({
-        type: 'time'
+        type: 'int',
+        nullable: true
     })
-    duration: string
+    duration: number
 
     @Column({
         type: 'int'

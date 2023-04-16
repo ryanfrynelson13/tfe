@@ -6,10 +6,14 @@ import classes from './events-grid.module.css'
 import Pagination from "../../../components/pagination/Pagination"
 import SortBy from "../../../components/sort-by/SortBy"
 import useEventCount from "../../../hooks/events/useEventCount"
+import { useSetRecoilState } from "recoil"
+import { displayFilters } from "../../../atoms/display-filters.atom"
 
 
 const EventsGrid = () => {   
     
+    const setDisplayFilters = useSetRecoilState(displayFilters)
+
     const eventCount = useEventCount()
     const [page, setPage] = useState<number>(1)
     const [orderBy, setOrderBy] = useState('date')
@@ -41,6 +45,9 @@ const EventsGrid = () => {
     (   
         <>
             <div className={classes.options}>
+                <div className={classes.filters}>
+                    <button onClick={() => setDisplayFilters(true)}>Filters</button>
+                </div>
                 <SortBy order={orderBy} onSort={changeOrder}/>
             </div>
             <div className={classes.grid}>
