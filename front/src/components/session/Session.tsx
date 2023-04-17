@@ -22,7 +22,7 @@ const Session = ({id, startTime, tickets, display, onDisplay, eventId}: SessionP
     const [priceToAdd, setPriceToAdd] = useState<number>(0)
 
     const handleNumberChange = (id: number, step: number, price: number) => {
-        setTicketsToAdd(ticketsToAdd.map(ticket => ticket.id === id? {...ticket, nb: ticket.nb + step  > 0 ?ticket.nb + step : 0} : ticket))
+        setTicketsToAdd(ticketsToAdd.map(ticket => ticket.id === id? {...ticket, nb:ticket.nb + step} : ticket))
         setPriceToAdd(oldPrice => oldPrice += price * step)
     }
 

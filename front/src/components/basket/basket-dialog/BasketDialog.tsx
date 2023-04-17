@@ -10,6 +10,7 @@ import { Badge } from '@mui/material'
 import { useRecoilState } from 'recoil';
 import { basketAtom } from '../../../atoms/basket.atom';
 import BasketProduct from '../basket-product/BasketProduct';
+import './dialog.css'
 
 const BasketDialog = () => {
 
@@ -22,6 +23,8 @@ const BasketDialog = () => {
 
     const handleClose = () => {
         setOpen(false);
+        const filtered  = basket.products.filter(product => product.tickets.some(ticket => ticket.nb > 0)? {...product} :false)
+        setBasket({...basket, products: filtered.map(product => ({...product, tickets: product.tickets.filter(ticket => ticket.nb > 0)})) })
     }
 
     const productsMap = basket.products?.map(product => (
@@ -46,20 +49,27 @@ const BasketDialog = () => {
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle sx={{
-                    width: '25vw',
+                    width: '28vw',
                     backgroundColor: 'white'
                 }}>Basket</DialogTitle>
                 <DialogContent sx={{
-                    width: '25vw'
+                    width: '28vw'
                 }}>
-                    {productsMap}                
+                    {productsMap}  
                 </DialogContent>     
                 <DialogActions>
-                    <Button onClick={handleClose}>Close</Button>
-                    <Button onClick={() => {
-                            handleClose()
-                        }
-                    }>Buy</Button>
+                    <div>
+                        <p className='total'>
+                            {basket.total.toFixed(2)}€
+                        </p>
+                    </div> 
+                    <div>
+                        <Button onClick={handleClose}>Close</Button>
+                        <Button onClick={() => {
+                                handleClose()
+                            }
+                        }>Buy</Button>
+                    </div>
                 </DialogActions>
             </Dialog>
         </>

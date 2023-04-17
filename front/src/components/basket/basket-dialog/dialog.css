@@ -1,0 +1,42 @@
+.MuiDialog-paperWidthSm{
+    max-width: 30vw !important;
+    width: 30vw !important;
+    align-items: center;
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+.MuiDialogActions-root{
+    justify-content: space-around !important;
+    width: 28vw;
+}
+
+.total{
+    margin: 0;
+    /* background-color: #03002e; */
+    border: 1px solid #03002e;
+    color: #03002e;
+    font-family: inherit;
+    font-size: 1.2rem;
+    padding: 1ch 2ch;
+    font-weight: 700;
+
+}
+
+.MuiDialogActions-root button{
+    padding: 2ch 4ch;
+    color: white;
+    font-size: 1.2rem;
+    font-family: inherit;
+    background-color: #03002e ;
+    border: 0.2px solid rgba(255, 255, 255, 0.349);
+    padding: 10px;
+    margin-right: 2ch;
+}
+
+.MuiDialogActions-root button:hover,
+.MuiDialogActions-root button:active{
+    cursor: pointer;
+    background-color: #17002e ;
+
+}

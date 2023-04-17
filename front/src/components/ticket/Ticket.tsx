@@ -12,9 +12,9 @@ const Ticket = ({id, pricePerTicket, title, nbPlaces, nb, onNumberChange}: Ticke
     return(
         <div className={classes.ticket}>
             <p>{title}</p>
-            <p>{pricePerTicket.toFixed(2)}€</p>
+            <p>{pricePerTicket.toFixed(2)}€ /pers</p>
             <div className={classes['change-nb']}>
-                <button onClick={() => onNumberChange(id, -nbPlaces, pricePerTicket)}>-</button>
+                <button onClick={() => onNumberChange(id, nb -nbPlaces < 0 ? -nb : -nbPlaces , pricePerTicket)}>-</button>
                 <p>{nb}</p>
                 <button onClick={() => onNumberChange(id, nbPlaces, pricePerTicket)}>+</button>
             </div>
