@@ -1,0 +1,30 @@
+.title{
+    background-color: #03002e;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2ch;
+    height: 4vh;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.268);
+}
+
+.title p {
+    margin: 0;
+}
+
+.tickets{
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.tickets > div {
+    margin-left: 1ch;
+}
+
+.tickets >div >img {
+    height: 2vh;
+    width: 2vh;
+}

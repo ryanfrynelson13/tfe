@@ -35,7 +35,7 @@ const EventInfo = ({event}:EventInfoProps) => {
                     </TabList>
                     </Box>
                     <TabPanel value="1"><EventDescription {...event} onReviews={handleChange}/></TabPanel>
-                    <TabPanel value="2"><BuyTickets sessions={event.sessions} tickets={event.tickets}/></TabPanel>
+                    <TabPanel value="2"><BuyTickets sessions={event.sessions} tickets={event.tickets} eventId={event.id}/></TabPanel>
                     <TabPanel value="3"><Reviews reviews={event.reviews} eventId={event.id}/></TabPanel>
                 </TabContext>
             </Box>             

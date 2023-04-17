@@ -46,7 +46,7 @@ const Layout = ({children}: LayoutProps) => {
 
     return(
         <div className={classes.layout}>
-            <Filters display={true}/>
+            <Filters/>
             <Header />
             <main>
                 {children}

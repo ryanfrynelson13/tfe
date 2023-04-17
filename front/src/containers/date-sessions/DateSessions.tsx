@@ -5,13 +5,14 @@ import { TicketPrice } from "../../types/ticket-prices/ticket-price.type"
 import classes from './date-sessions.module.css'
 
 type DateSessionsProps = {
+    eventId: number
     sessions: SessionType[]
     tickets: TicketPrice[]
 
 }
 
 
-const DateSessions = ({sessions, tickets}: DateSessionsProps) =>{
+const DateSessions = ({sessions, tickets, eventId}: DateSessionsProps) =>{
 
     const [displayTickets, setDisplayTickets] = useState<{ id: number, display: boolean}[]>([])
 
@@ -24,7 +25,7 @@ const DateSessions = ({sessions, tickets}: DateSessionsProps) =>{
     }
 
     const sessionsMap = sessions?.map(session => (
-        <Session key={session.id} {...session} tickets={tickets} display={displayTickets.find(display => display.id === session.id)!} onDisplay={handleChangeDisplay}/>
+        <Session key={session.id} {...session} eventId={eventId} tickets={tickets} display={displayTickets.find(display => display.id === session.id)!} onDisplay={handleChangeDisplay}/>
     ))
 
     return sessions.length > 0 ?(

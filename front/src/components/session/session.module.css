@@ -27,3 +27,27 @@
 .tickets {
     background-color: white;
 }
+
+.add-to-cart{
+    background-color: rgba(102, 102, 242, 0.251);
+    padding: 1ch;
+    display: flex;
+    justify-content: center;
+}
+
+.add-to-cart button{
+    padding: 1ch 2ch;
+    color: white;
+    font-size: 0.8rem;
+    font-family: inherit;
+    background-color: #03002e ;
+    border: 0.2px solid rgba(255, 255, 255, 0.349);
+    padding: 10px;
+}
+
+.add-to-cart button:hover,
+.add-to-cart button:active{
+    cursor: pointer;
+    background-color: #17002e ;
+
+}

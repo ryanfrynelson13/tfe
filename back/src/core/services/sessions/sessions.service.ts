@@ -14,6 +14,16 @@ export class SessionsService {
         @InjectRepository(EventEntity) private eventsRepo: Repository<EventEntity>
     ){}
 
+    async findOneSession(id: number) {
+        const session = await this.sessionsRepo.findOneBy({id: id})
+
+        if(!session){
+            throw new NotFoundException('session not found')
+        }
+
+        return session
+    }
+
     async createMultipleSessions(eventId: number, openDays: number[], startTime: string, closeTime: string) {
 
         const event = await this.eventsRepo.findOne({where:{id: eventId},relations: {sessions: true}})

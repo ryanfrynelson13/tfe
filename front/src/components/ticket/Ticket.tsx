@@ -2,19 +2,21 @@ import { useState } from "react"
 import { TicketPrice } from "../../types/ticket-prices/ticket-price.type"
 import classes from './ticket.module.css'
 
-const Ticket = ({id, pricePerTicket, title, nbPlaces}: TicketPrice) => {
+type TicketProps = TicketPrice & {
+    nb: number
+    onNumberChange: (id: number,step: number, price: number) => void
+}
 
-    const [nbTickets, setNbTickets] = useState<number>(0)
-
+const Ticket = ({id, pricePerTicket, title, nbPlaces, nb, onNumberChange}: TicketProps) => {
 
     return(
         <div className={classes.ticket}>
             <p>{title}</p>
-            <p>{pricePerTicket.toFixed()}€</p>
+            <p>{pricePerTicket.toFixed(2)}€</p>
             <div className={classes['change-nb']}>
-                <button onClick={() => {setNbTickets(nb => nb - nbPlaces > 0 ? nb - nbPlaces : 0)}}>-</button>
-                <p>{nbTickets}</p>
-                <button onClick={() => {setNbTickets(nb => nb + nbPlaces)}}>+</button>
+                <button onClick={() => onNumberChange(id, -nbPlaces, pricePerTicket)}>-</button>
+                <p>{nb}</p>
+                <button onClick={() => onNumberChange(id, nbPlaces, pricePerTicket)}>+</button>
             </div>
         </div>
     )

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { EVENT_URLS } from "../../enums/event-urls.enum"
 import { DetailledEvent } from "../../types/events/detailled-event.type"
 
-const useEvent = (id: string) => {
+const useEvent = (id: string | number) => {
     const [isLoading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<unknown>(null)
     const [event, setEvent] = useState<DetailledEvent | null>(null)

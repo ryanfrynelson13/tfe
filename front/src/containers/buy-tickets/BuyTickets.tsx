@@ -7,11 +7,12 @@ import { TicketPrice } from "../../types/ticket-prices/ticket-price.type"
 import classes from './buy-tickets.module.css'
 
 type BuyTicketsProps = {
+    eventId: number
     sessions: Session[]
     tickets: TicketPrice[]
 }
 
-const BuyTickets = ({sessions, tickets}: BuyTicketsProps) => {
+const BuyTickets = ({sessions, tickets, eventId}: BuyTicketsProps) => {
 
     const id = useId()
 
@@ -29,7 +30,7 @@ const BuyTickets = ({sessions, tickets}: BuyTicketsProps) => {
     return(
         <div className={classes.tickets}>
             <CalendarTickets sessions={sessions} date={date} onDate={handleChangeDate}/>
-            <DateSessions key={id} sessions={dateSessions} tickets={tickets}/>
+            <DateSessions key={id} eventId={eventId} sessions={dateSessions} tickets={tickets}/>
         </div>
     )
 }
