@@ -35,7 +35,7 @@ const Navbar = () => {
                 <NavLink style={{
                     width: '8vw',
                     height: '10vh'
-                }} to={''}>
+                }} to={''} className={classes['logo-link']}>
                     <img className={classes.logo} src={logo} alt="" />
                 </NavLink>
             </div>

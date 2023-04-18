@@ -4,7 +4,6 @@ import * as dayjs from 'dayjs'
 import classes from './basket-product.module.css'
 import { BasketProduct as BasketProductProps } from "../../../types/basket/basket.type";
 import { useEffect, useMemo, useState } from "react";
-// import {Tick} from '@mui/icons-material'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import ticketsPng from '../../../assets/images/tickets.png'

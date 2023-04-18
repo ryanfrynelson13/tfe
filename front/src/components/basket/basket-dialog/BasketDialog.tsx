@@ -50,10 +50,14 @@ const BasketDialog = () => {
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle sx={{
                     width: '28vw',
-                    backgroundColor: 'white'
+                    backgroundColor: 'white',
+                    paddingLeft: '0',
+                    paddingRight: '0'
                 }}>Basket</DialogTitle>
                 <DialogContent sx={{
-                    width: '28vw'
+                    width: '28vw',
+                    paddingLeft: '0',
+                    paddingRight: '0'
                 }}>
                     {productsMap}  
                 </DialogContent>     

@@ -1,7 +1,7 @@
 .navbar{
     background-color: #191528;
     height: 7vh;
-    width: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -21,6 +21,10 @@
 
 .navbar a:hover{
     background-color: #0301824e;
+}
+
+a.logo-link:hover{
+    background-color: #191528;
 }
 
 a.active {

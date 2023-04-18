@@ -1,20 +1,21 @@
 .absolute{
     position: absolute;
-    top: 0;
+    top: -7vh;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 15;
-    transition: 1s;
+    z-index: 18;
     background-color: rgba(0, 0, 0, 0.415);   
     cursor: pointer; 
+    overscroll-behavior: contain;
+    transition: 2s;
 }
 .modal{
     top: 0;
-    left: 0;
+    left: -16vw;
     bottom: 0;
     height: 100vh;
-    width: 10vw;
+    width: 14vw;
     position: fixed;
     background-color: #03002e;
     display: flex;
@@ -24,6 +25,11 @@
     border-right: 1px solid rgba(255, 255, 255, 0.523);
     z-index: 20;
     cursor: default;
+    transition: 0.5s;
+}
+
+.modal-open{    
+    transform: translateX(16vw);
 }
 
 .filter{    
