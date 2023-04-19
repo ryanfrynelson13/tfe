@@ -4,6 +4,7 @@ import { CategoryEntity } from "./category.entity";
 import { TicketPriceEntity } from "./ticket-price.entity";
 import { SessionEntity } from "./sessions.entity";
 import { ReviewEntity } from "./review.entity";
+import { UserEntity } from "./user.entity";
 
 
 @Entity('events')
@@ -14,7 +15,6 @@ export class EventEntity {
 
     @Column({
         type: 'varchar',
-        length: 100,
         nullable: false
     })
     title: string
@@ -75,5 +75,8 @@ export class EventEntity {
 
     @OneToMany(() => ReviewEntity, (reviews) => reviews.event)
     reviews: ReviewEntity[]
+
+    @ManyToOne(() => UserEntity, user => user.id)
+    user: UserEntity
 
 }

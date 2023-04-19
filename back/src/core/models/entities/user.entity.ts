@@ -5,6 +5,7 @@ import { EventEntity } from "./Event.entity";
 import { ReviewEntity } from "./review.entity";
 import { SaleEntity } from "./sale.entity";
 import { Exclude } from "class-transformer";
+import { EventLocationEntity } from "./event-location.entity";
 
 @Entity('users')
 export class UserEntity{
@@ -56,4 +57,10 @@ export class UserEntity{
 
     @OneToMany(() => SaleEntity, (sales) => sales.user)
     sales: SaleEntity[]
+
+    @OneToMany(() => EventEntity, (event) => event.user)
+    event: EventEntity[]
+
+    @OneToMany(() => EventLocationEntity, (locations) => locations.user)
+    locations: EventLocationEntity[]
 }

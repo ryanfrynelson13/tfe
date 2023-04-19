@@ -18,6 +18,7 @@ const BasketDialog = () => {
     const [open, setOpen] = useState<boolean>(false)
 
     const handleClickOpen = () => {
+        if(basket.products.length === 0) return
         setOpen(true);
     }
 
