@@ -3,21 +3,16 @@ import classes from './navbar.module.css'
 import useSearch from '../../hooks/events/useSearch'
 import { useState } from 'react'
 import Dropdown from '../dropdown/Dropdown'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBasketShopping} from '@fortawesome/free-solid-svg-icons'
 import { useRecoilValue } from 'recoil'
 import { userAtom } from '../../atoms/user.atom'
 import UserMenu from '../user-menu/UserMenu'
 import logo from '../../assets/images/ES_Logo.png'
-import { Badge } from '@mui/material'
-import { basketAtom } from '../../atoms/basket.atom'
 import BasketDialog from '../basket/basket-dialog/BasketDialog'
 
 const Navbar = () => {
 
     const navigate = useNavigate()
     const user = useRecoilValue(userAtom)
-    const basket = useRecoilValue(basketAtom)
 
     const [search, setSearch] = useState<string>('')
     const [inputFocus, setInputFocus] = useState<boolean>(false)

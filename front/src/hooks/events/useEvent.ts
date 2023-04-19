@@ -10,7 +10,7 @@ const useEvent = (id: string | number) => {
 
     useEffect(() => {
         getEvent()
-    },[])
+    },[id])
     
     let getEvent = async() => {
         try {

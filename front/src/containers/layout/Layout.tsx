@@ -10,6 +10,7 @@ import { User } from "../../types/users/user.type"
 import Filters from "../filters/Filters"
 import { EVENT_URLS } from "../../enums/event-urls.enum"
 import { filtersAtom } from "../../atoms/filters.atom"
+import { getToken } from "../../utils/token.util"
 
 type LayoutProps = {
     children: React.ReactNode
@@ -22,12 +23,11 @@ const Layout = ({children}: LayoutProps) => {
     
     useEffect(() => {
         if(!user){
-            const token = localStorage.getItem('access_token')
+            const token = getToken() 
             if(token){
-                const bearer = JSON.parse(token)
                 axios.get<User>(USERS_URLS.users, {
                     headers: {
-                        Authorization: `Bearer ${bearer}`
+                        Authorization: `Bearer ${token}`
                     }
                 })
                     .then(({data}) => {
