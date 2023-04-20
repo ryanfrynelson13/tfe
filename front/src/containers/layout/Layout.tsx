@@ -11,6 +11,7 @@ import Filters from "../filters/Filters"
 import { EVENT_URLS } from "../../enums/event-urls.enum"
 import { filtersAtom } from "../../atoms/filters.atom"
 import { getToken } from "../../utils/token.util"
+import { CompleteUser } from "../../types/users/user-complete.type"
 
 type LayoutProps = {
     children: React.ReactNode
@@ -22,10 +23,10 @@ const Layout = ({children}: LayoutProps) => {
     const setFilters = useSetRecoilState(filtersAtom)
     
     useEffect(() => {
-        if(!user){
+        if(!user || !user?.favorites){
             const token = getToken() 
             if(token){
-                axios.get<User>(USERS_URLS.users, {
+                axios.get<CompleteUser>(USERS_URLS.users, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

@@ -4,16 +4,17 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faRightFromBracket} from '@fortawesome/free-solid-svg-icons'
-import classes from './user-menu.module.css'
-import { useSetRecoilState } from 'recoil';
+import './user-menu.css'
+import { useRecoilState } from 'recoil';
 import { userAtom } from '../../atoms/user.atom';
 import { useNavigate } from 'react-router-dom';
+import { WidthFull } from '@mui/icons-material';
 
 const UserMenu = () => {
 
     const navigate = useNavigate()
 
-    const setUser = useSetRecoilState(userAtom)
+    const [user, setUser] = useRecoilState(userAtom)
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl)
@@ -52,9 +53,10 @@ const UserMenu = () => {
         </Button>
         <Menu
             sx={{
-                fontFamily:'inherit'
+                fontFamily:'inherit',
+                Width: '10vw'
             }}
-            id="basic-menu"
+            id="basic-menu"            
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
@@ -62,12 +64,30 @@ const UserMenu = () => {
             'aria-labelledby': 'basic-button',
             }}
         >
-            <MenuItem onClick={() => navigate('/profile')}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem sx={{
+                backgroundColor: '#03002e',
+                cursor: 'default',
+                color: 'white'
+                }}
+                disabled            
+            >{user?.username}</MenuItem>
+            <MenuItem onClick={() => {
+                navigate('/profile')
+                handleClose()
+            }}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My Events</MenuItem>
+            <MenuItem onClick={() => {
+                navigate('/profile/favorites')
+                handleClose()
+            }}>Favorites</MenuItem>
+            <MenuItem onClick={() => {
+                navigate('/profile/reviews')
+                handleClose()
+            }}>My Reviews</MenuItem>
             <MenuItem onClick={() =>{
                 handleClose()
                 logout()
-             }}><FontAwesomeIcon icon={faRightFromBracket}/><p className={classes.logout}> Logout</p></MenuItem>
+             }}><FontAwesomeIcon icon={faRightFromBracket}/><p className='logout'> Logout</p></MenuItem>
         </Menu>
       </>
     )

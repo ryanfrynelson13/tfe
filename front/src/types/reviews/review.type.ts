@@ -1,3 +1,4 @@
+import { EventType } from "../events/event.type"
 import { User } from "../users/user.type"
 
 export type Review = {
@@ -6,4 +7,5 @@ export type Review = {
     comment?: string
     createdAt: string
     user?: User
+    event?: EventType
 }

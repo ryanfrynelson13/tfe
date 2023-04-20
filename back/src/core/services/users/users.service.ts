@@ -26,6 +26,30 @@ export class UsersService {
         return user
     }
 
+    async getProfile(userId: number) {
+        const user = await this.usersRepo.findOne({where: {id: userId}, relations:{
+            favorites: true,
+            permission: true,
+            addresses: true,
+            events: true,
+            reviews: {
+                event: true
+            },
+            sales:{tickets:{
+                session: {
+                    event: true
+                },
+                ticketPrice: true
+            }}
+        }})
+
+        if(!user){
+            throw new NotFoundException('user not found')
+        }
+
+        return user
+    }
+
     async updateUser(id: number, user: Partial<UserType>){
         const userToUpdate = await this.usersRepo.findOneBy({id: id})
 

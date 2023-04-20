@@ -35,7 +35,8 @@ export class AuthService {
 
         const payload = {id: registeredUser.id, username: registeredUser.username}
         return {
-            access_token: await this.jwtService.signAsync(payload)
+            access_token: await this.jwtService.signAsync(payload),
+            user: registeredUser
         }
     }
 
@@ -47,7 +48,7 @@ export class AuthService {
             throw new NotFoundException('user does not exist')
         }
 
-        const userToLogin = await this.usersRepo.findOne({where: {email: user.email}})
+        const userToLogin = await this.usersRepo.findOne({where: {email: user.email}, relations: {favorites: true, permission: true}})
 
         const checkPassword = await bcrypt.compare(user.password, userToLogin.password)
 
@@ -57,7 +58,8 @@ export class AuthService {
 
         const payload = {id: userToLogin.id, username: userToLogin.username}
         return {
-            access_token: await this.jwtService.signAsync(payload)
+            access_token: await this.jwtService.signAsync(payload),
+            user: userToLogin
         }
         
     }

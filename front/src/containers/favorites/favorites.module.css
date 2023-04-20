@@ -1,0 +1,11 @@
+.grid{
+    display: grid;
+    width: 78%;
+    margin: 0 auto;
+    grid-template-columns: 12vw 12vw 12vw 12vw 12vw 12vw;
+    grid-template-rows: 30vh;
+    row-gap: 4ch;
+    column-gap: 2ch;
+    align-items: center;
+    margin-top: 4ch;
+}

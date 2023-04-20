@@ -23,6 +23,7 @@ import { ReviewsService } from "./services/reviews/reviews.service";
 import { TicketsService } from "./services/tickets/tickets.service";
 import { SessionsService } from "./services/sessions/sessions.service";
 import { SeederService } from "./services/seeder/seeder.service";
+import { SalesService } from "./services/sales/sales.service";
 
 @Module({
     exports: [
@@ -35,7 +36,8 @@ import { SeederService } from "./services/seeder/seeder.service";
         ReviewsService,
         TicketsService,
         SessionsService,
-        SeederService
+        SeederService,
+        SalesService
     ],
     imports: [
         TypeOrmModule.forFeature([
@@ -54,7 +56,7 @@ import { SeederService } from "./services/seeder/seeder.service";
         JwtModule.register({
             global: true,
             secret: jwtConstants,
-            signOptions: {expiresIn: '2h'}
+            signOptions: {expiresIn: '12h'}
         })
     ],
     providers: [
@@ -67,7 +69,8 @@ import { SeederService } from "./services/seeder/seeder.service";
         ReviewsService,
         TicketsService,
         SessionsService,
-        SeederService
+        SeederService,
+        SalesService
     ]    
 })
 export class CoreModule{}

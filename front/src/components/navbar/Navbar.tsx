@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import classes from './navbar.module.css'
 import useSearch from '../../hooks/events/useSearch'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Dropdown from '../dropdown/Dropdown'
 import { useRecoilValue } from 'recoil'
 import { userAtom } from '../../atoms/user.atom'
@@ -17,6 +17,10 @@ const Navbar = () => {
     const [search, setSearch] = useState<string>('')
     const [inputFocus, setInputFocus] = useState<boolean>(false)
     const {events} = useSearch(search,'6')
+
+    // useEffect(() => {
+
+    // },[user])
 
     const handleBlur = () => {
         setTimeout(()=> {

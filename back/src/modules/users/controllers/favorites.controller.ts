@@ -12,7 +12,7 @@ export class FavoritesController {
         private readonly favoritesService: FavoritesService
     ){}
 
-    @Get('')
+    @Get()
     getAllFavorites(
         @Request() req
     ){
@@ -20,7 +20,7 @@ export class FavoritesController {
         return this.favoritesService.findAllFavorites(userId)
     }
     
-    @Post('')
+    @Post()
     addToFavorites(
         @Request() req,
         @Body() body: AddFavoriteDto

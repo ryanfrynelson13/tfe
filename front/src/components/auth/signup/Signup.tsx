@@ -8,6 +8,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 import SignupForm from "../../../types/auth/signup-form.type"
+import { useSetRecoilState } from "recoil"
+import { userAtom } from "../../../atoms/user.atom"
 
 const signupSchema = yup.object({
     email: yup.string().required().email().typeError('no valid email'),
@@ -17,6 +19,8 @@ const signupSchema = yup.object({
 })
 
 const Signup = () => {
+
+    const setUser = useSetRecoilState(userAtom)
   
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues: {
@@ -45,6 +49,7 @@ const Signup = () => {
         axios.post('http://localhost:3000/auth/register',body)
             .then(res => {
                 localStorage.setItem('access_token', JSON.stringify(res.data.access_token))
+                setUser(res.data.user)
                 navigate(-1)
             })
             .catch(err => console.log(err))

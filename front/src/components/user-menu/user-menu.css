@@ -1,0 +1,16 @@
+.logout{
+    margin: 0 0 0 1ch;
+}
+
+.MuiPaper-root {
+    display: flex;
+    justify-content: center;
+    min-width: 5vw;
+    /* left: 2310px; */
+    padding: 0;
+}
+
+.MuiList-root{
+    padding: 0 !important;
+    width: 100%;
+}

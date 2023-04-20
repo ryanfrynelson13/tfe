@@ -1,0 +1,11 @@
+.grid{
+    display: grid;
+    width: 80%;
+    margin: 4ch auto;
+    grid-template-columns: 24vw 24vw 24vw;
+    grid-template-rows: 35vh;
+    row-gap: 8ch;
+    column-gap: 2ch;
+    align-items: start;
+    justify-content: center;
+}

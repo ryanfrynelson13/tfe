@@ -16,13 +16,6 @@ export class SaleEntity{
     })
     createdAt: string
 
-    @Column({
-        type: 'float',
-        name: 'total_price',
-        nullable: true
-    })
-    totalPrice: number
-
     @ManyToOne(() => UserEntity, (user) => user.id)
     user: UserEntity
 

@@ -7,7 +7,6 @@ import { EventLocationEntity } from 'src/core/models/entities/event-location.ent
 import { PermissionEntity } from 'src/core/models/entities/permission.entity';
 import { ReviewEntity } from 'src/core/models/entities/review.entity';
 import { SaleEntity } from 'src/core/models/entities/sale.entity';
-import { SessionEntity } from 'src/core/models/entities/sessions.entity';
 import { TicketPriceEntity } from 'src/core/models/entities/ticket-price.entity';
 import { TicketEntity } from 'src/core/models/entities/ticket.entity';
 import { UserEntity } from 'src/core/models/entities/user.entity';
@@ -35,7 +34,6 @@ export class SeederService{
         @InjectRepository(UserEntity) private userRepo: Repository<UserEntity>,
         @InjectRepository(AddressUserEntity) private userAddressRepo: Repository<AddressUserEntity>,
         @InjectRepository(ReviewEntity) private reviewRepo: Repository<ReviewEntity>,
-        @InjectRepository(SessionEntity) private sessionRepo: Repository<SessionEntity>,
         @InjectRepository(TicketPriceEntity) private priceRepo: Repository<TicketPriceEntity>,
         @InjectRepository(SaleEntity) private saleRepo: Repository<SaleEntity>,
         @InjectRepository(TicketEntity) private ticketRepo: Repository<TicketEntity>,

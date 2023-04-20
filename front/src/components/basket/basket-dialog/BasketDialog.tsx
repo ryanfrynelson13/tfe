@@ -11,8 +11,11 @@ import { useRecoilState } from 'recoil';
 import { basketAtom } from '../../../atoms/basket.atom';
 import BasketProduct from '../basket-product/BasketProduct';
 import './dialog.css'
+import { useNavigate } from 'react-router-dom';
 
 const BasketDialog = () => {
+
+    const navigate = useNavigate()
 
     const [basket, setBasket] = useRecoilState(basketAtom)
     const [open, setOpen] = useState<boolean>(false)
@@ -72,8 +75,9 @@ const BasketDialog = () => {
                         <Button onClick={handleClose}>Close</Button>
                         <Button onClick={() => {
                                 handleClose()
+                                navigate('/check-out')
                             }
-                        }>Buy</Button>
+                        }>Check Out</Button>
                     </div>
                 </DialogActions>
             </Dialog>

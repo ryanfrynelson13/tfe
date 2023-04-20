@@ -13,7 +13,15 @@ export class FavoritesService {
     ){}
 
     async findAllFavorites(userId: number){
-        const {favorites} = await this.userRepo.findOne({where: {id: userId}, relations: {favorites: true}})
+        const {favorites} = await this.userRepo.findOne({
+            where: {id: userId}, 
+            relations: {
+                favorites: {
+                    tickets: true,
+                    reviews: true
+                }
+            }
+        })
 
         return favorites
 

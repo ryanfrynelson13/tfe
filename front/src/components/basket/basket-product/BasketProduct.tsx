@@ -10,8 +10,11 @@ import ticketsPng from '../../../assets/images/tickets.png'
 import Ticket from "../../ticket/Ticket";
 import { useSetRecoilState } from "recoil";
 import { basketAtom } from "../../../atoms/basket.atom";
+import { useNavigate } from "react-router-dom";
 
 const BasketProduct = ({eventId, tickets, sessionId}: BasketProductProps) => {
+
+    const navigate = useNavigate()
 
     const setBasket = useSetRecoilState(basketAtom)
 
@@ -45,7 +48,7 @@ const BasketProduct = ({eventId, tickets, sessionId}: BasketProductProps) => {
             marginBottom : '4px'
         }}>
             <div className={classes.title}>
-                <p>{event?.title}</p>
+                <p style={{cursor: 'pointer'}} onClick={() => navigate(`/event/${event?.id}`)}>{event?.title}</p>
                 <p>{dayjs(session?.startTime).format('DD/MM/YY HH:mm').toString()}</p>
                 <div className={classes.tickets}>
                     <p>{nbTickets}</p>
@@ -62,7 +65,6 @@ const BasketProduct = ({eventId, tickets, sessionId}: BasketProductProps) => {
                     {ticketsMap}
                 </div>
             }
-
         </div>
     )
 }

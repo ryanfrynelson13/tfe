@@ -58,8 +58,8 @@ export class UserEntity{
     @OneToMany(() => SaleEntity, (sales) => sales.user)
     sales: SaleEntity[]
 
-    @OneToMany(() => EventEntity, (event) => event.user)
-    event: EventEntity[]
+    @OneToMany(() => EventEntity, (events) => events.user)
+    events: EventEntity[]
 
     @OneToMany(() => EventLocationEntity, (locations) => locations.user)
     locations: EventLocationEntity[]

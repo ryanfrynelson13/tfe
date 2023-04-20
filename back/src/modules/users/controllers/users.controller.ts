@@ -20,6 +20,14 @@ export class UsersController {
         return this.usersService.getOneUser(userId)
     }
 
+    @UseInterceptors(ClassSerializerInterceptor)
+    @Get('profile')
+    getProfile(
+        @Request() req){
+        const userId: number = req.user.id
+        return this.usersService.getProfile(userId)
+    }
+
     @Patch('')
     updateUser(
         @Request() req,

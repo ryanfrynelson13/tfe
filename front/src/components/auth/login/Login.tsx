@@ -2,8 +2,13 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 import classes from './login.module.css'
+import { userAtom } from "../../../atoms/user.atom"
+import { useSetRecoilState } from "recoil"
 
 const Login = () => {
+
+  const setUser = useSetRecoilState(userAtom)
+
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
@@ -21,6 +26,7 @@ const Login = () => {
         password
       })
       localStorage.setItem('access_token', JSON.stringify(data.access_token))
+      setUser(data.user)
       navigate(-1)
     } catch (error) {
      console.log(error) 
