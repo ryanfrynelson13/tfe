@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EventEntity } from 'src/core/models/entities/Event.entity';
+import { EventEntity } from 'src/core/models/entities/event.entity';
 import { UserEntity } from 'src/core/models/entities/user.entity';
 import { Repository } from 'typeorm';
 

@@ -1,6 +1,6 @@
 import { Column, Entity, Index, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { UserEntity } from "./user.entity";
-import { EventEntity } from "./Event.entity";
+import { EventEntity } from "./event.entity";
 
 
 @Entity('reviews')

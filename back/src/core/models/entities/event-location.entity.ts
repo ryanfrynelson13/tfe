@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { EventEntity } from "./Event.entity";
+import { EventEntity } from "./event.entity";
 import { UserEntity } from "./user.entity";
 
 

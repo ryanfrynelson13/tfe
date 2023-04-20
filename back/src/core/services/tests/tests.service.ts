@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EventEntity } from 'src/core/models/entities/Event.entity';
+import { EventEntity } from 'src/core/models/entities/event.entity';
 import { AddressUserEntity } from 'src/core/models/entities/address-user.entity';
 import { CategoryEntity } from 'src/core/models/entities/category.entity';
 import { EventLocationEntity } from 'src/core/models/entities/event-location.entity';

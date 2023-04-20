@@ -5,7 +5,6 @@ import { EventsModule } from './modules/events/events.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { CoreModule } from './core/core.module';
-import { TestsModule } from './modules/tests/tests.module';
 import { ReviewsModule } from './modules/reviews/reviews.module';
 import { SeederModule } from './modules/seeder/seeder.module';
 
@@ -28,7 +27,6 @@ import { SeederModule } from './modules/seeder/seeder.module';
     EventsModule,
     AuthModule,
     UsersModule,
-    TestsModule,
     ReviewsModule,
     SeederModule,
   ]

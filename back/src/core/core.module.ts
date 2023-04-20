@@ -4,7 +4,7 @@ import { JwtModule } from '@nestjs/jwt'
 import { UserEntity } from 'src/core/models/entities/user.entity';
 import { PermissionEntity } from 'src/core/models/entities/permission.entity';
 import { AddressUserEntity } from 'src/core/models/entities/address-user.entity';
-import { EventEntity } from 'src/core/models/entities/Event.entity';
+import { EventEntity } from 'src/core/models/entities/event.entity';
 import { EventLocationEntity } from 'src/core/models/entities/event-location.entity';
 import { CategoryEntity } from 'src/core/models/entities/category.entity';
 import { ReviewEntity } from 'src/core/models/entities/review.entity';

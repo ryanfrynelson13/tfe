@@ -1,6 +1,6 @@
 import * as dayjs from "dayjs";
 import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
-import { EventEntity } from "../models/entities/Event.entity";
+import { EventEntity } from "../models/entities/event.entity";
 import { SessionEntity } from "../models/entities/sessions.entity";
 dayjs.extend(isSameOrBefore)
 

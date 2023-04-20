@@ -1,7 +1,7 @@
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { PermissionEntity } from "./permission.entity";
 import { AddressUserEntity } from "./address-user.entity";
-import { EventEntity } from "./Event.entity";
+import { EventEntity } from "./event.entity";
 import { ReviewEntity } from "./review.entity";
 import { SaleEntity } from "./sale.entity";
 import { Exclude } from "class-transformer";

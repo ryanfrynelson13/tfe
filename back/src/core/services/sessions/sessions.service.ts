@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from "@nestjs/typeorm";
-import { EventEntity } from 'src/core/models/entities/Event.entity';
+import { EventEntity } from 'src/core/models/entities/event.entity';
 import { SessionEntity } from "src/core/models/entities/sessions.entity";
 import { createSessionsDates } from 'src/core/utils/sessions.utils';
 import { Repository } from "typeorm";

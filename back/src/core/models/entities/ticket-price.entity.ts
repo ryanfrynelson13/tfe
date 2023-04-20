@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { EventEntity } from "./Event.entity";
+import { EventEntity } from "./event.entity";
 
 
 @Entity('ticket_prices')
