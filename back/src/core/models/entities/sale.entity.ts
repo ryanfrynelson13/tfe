@@ -18,7 +18,8 @@ export class SaleEntity{
 
     @Column({
         type: 'float',
-        default: 0
+        default: 0,
+        nullable: true
     })
     total: number
 

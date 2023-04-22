@@ -41,7 +41,7 @@ const UserInfo = () => {
                 lastname: user?.lastname ?? '',
             })
         }        
-    }, [user])
+    }, [])
 
     useEffect(() => {
         if(addressInForm !== null){
@@ -91,14 +91,14 @@ const UserInfo = () => {
                 lastname: userInfo.lastname
             }
 
-             updateUser(userBody)
+            updateUser(userBody)
                 .then((data) => {
                     setUser({...user, firstname: data.firstname, lastname: data.lastname})
                     console.log(user)
                 })
 
         }
-        navigate('/sales/pay')
+        navigate('/check-out/pay')
     }
 
     return(

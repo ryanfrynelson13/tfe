@@ -2,6 +2,7 @@ import App from "../App";
 import LoginContainer from "../containers/auth/login/LoginContainer";
 import SignupContainer from "../containers/auth/signup/SignupContainer";
 import Order from "../containers/order/Order";
+import StripeContainer from "../containers/stripe/StripeContainer";
 import UserInfo from "../containers/user-info/UserInfo";
 import AuthPage from "../pages/auth-page/AuthPage";
 import CategoriesPage from "../pages/categories-page/CategoriesPage";
@@ -60,6 +61,10 @@ export const routes = [
                     {
                         path: 'personnal-info',
                         element: <UserInfo />
+                    },
+                    {
+                        path: 'pay',
+                        element: <StripeContainer />
                     }
                 ]
             }
