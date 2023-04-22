@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from "@nestjs/typeorm";
 import { EventEntity } from 'src/core/models/entities/event.entity';
 import { SessionEntity } from "src/core/models/entities/sessions.entity";
@@ -40,5 +40,23 @@ export class SessionsService {
         }
 
         return event.sessions
+    }
+
+    async buyTicket(sessionId: number) {
+
+        const session = await this.sessionsRepo.findOneBy({id: sessionId})
+
+        if(!session){
+            throw new NotFoundException('session not found')
+        }
+
+        if(session.placesLeft === 0){
+            throw new BadRequestException('no more places')
+        }
+
+
+        session.placesLeft -= 1
+
+        return this.sessionsRepo.save(session)
     }
 }

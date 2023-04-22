@@ -1,0 +1,100 @@
+.info{
+    width: 60%;
+    margin: 4ch auto;
+    background-color: white;
+    padding: 4ch;
+}
+
+.info h3{
+    color: #03002e;
+}
+
+.info form{
+    color: #03002e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info h4{
+    width: 100%;
+    
+}
+
+.user {
+    width: 100%;
+    display: flex;
+    margin: 2ch 0;
+}
+
+.user > div{
+    width: 50%;
+}
+
+.info label{
+    margin-right: 1ch;
+}
+
+.info input{
+    width: 60%;
+    padding: 0.5ch 1ch;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.info select{
+    width: 8vw;
+    padding: 1ch;
+    text-align: center;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.448);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.address{
+    width: 100%;
+    display: flex;
+    flex-direction: column
+}
+
+.address > div{
+    margin: 1ch 0;
+}
+
+.address .numbers{
+    display: flex;
+}
+
+.address .numbers > div{
+    width: 50%;
+}
+
+.info button{
+    padding: 2ch 4ch;
+    color: white;
+    font-size: 0.8rem;
+    font-family: inherit;
+    background-color: #03002e ;
+    border: 0.2px solid rgba(255, 255, 255, 0.349);
+    padding: 10px;
+}
+
+.info button:hover,
+.info button:active{
+    cursor: pointer;
+    background-color: #17002e ;
+
+}
+
+.proceed{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.proceed button {
+    font-size: 1.2rem;
+}

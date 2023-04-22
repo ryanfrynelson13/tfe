@@ -9,8 +9,21 @@
     color: #03002e;
 }
 
+.order .product{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .order .tickets {
-    width: 90%;
+    width: 80%;
+}
+
+.order .check{
+    width: 20%;
+    display: flex;
+    justify-content: center;
 }
 
 .order .actions{
@@ -18,13 +31,21 @@
     justify-content: space-between;
     width: 100%;    
     height: 4vw;
-    align-items: center;
+    align-items: end;
 }
 
 .actions p{
     color: #03002e;
     font-size: 1.2rem;
     font-weight: 700;
+}
+
+.actions > div{
+    height: 4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
 }
 
 .actions button{
@@ -35,6 +56,8 @@
     background-color: #03002e ;
     border: 0.2px solid rgba(255, 255, 255, 0.349);
     padding: 10px;
+    margin-top: 1ch;
+
 }
 
 .actions button:hover,

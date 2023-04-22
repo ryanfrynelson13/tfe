@@ -20,10 +20,12 @@ import { jwtConstants } from "./services/auth/constants";
 import { FavoritesService } from "./services/favorites/favorites.service";
 import { CategoriesService } from "./services/categories/categories.service";
 import { ReviewsService } from "./services/reviews/reviews.service";
-import { TicketsService } from "./services/tickets/tickets.service";
+import { TicketPricesService } from "./services/ticket-prices/ticket-prices.service";
 import { SessionsService } from "./services/sessions/sessions.service";
 import { SeederService } from "./services/seeder/seeder.service";
 import { SalesService } from "./services/sales/sales.service";
+import { TicketsService } from "./services/tickets/tickets.service";
+import { AddressesService } from "./services/addresses/addresses.service";
 
 @Module({
     exports: [
@@ -34,10 +36,12 @@ import { SalesService } from "./services/sales/sales.service";
         FavoritesService,
         CategoriesService,
         ReviewsService,
-        TicketsService,
+        TicketPricesService,
         SessionsService,
         SeederService,
-        SalesService
+        SalesService,
+        TicketsService,
+        AddressesService
     ],
     imports: [
         TypeOrmModule.forFeature([
@@ -67,10 +71,12 @@ import { SalesService } from "./services/sales/sales.service";
         FavoritesService,
         CategoriesService,
         ReviewsService,
-        TicketsService,
+        TicketPricesService,
         SessionsService,
         SeederService,
-        SalesService
+        SalesService,
+        TicketsService,
+        AddressesService
     ]    
 })
 export class CoreModule{}

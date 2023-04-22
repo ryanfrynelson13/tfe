@@ -9,6 +9,7 @@ export type BasketProduct = {
     eventId: number
     sessionId: number
     tickets:  BasketTicket[]
+    checkOut: boolean
 }
 
 type BasketTicket = TicketPrice & {

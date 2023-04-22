@@ -1,3 +1,4 @@
+import { Address } from "../addresses/address.type"
 import { EventType } from "../events/event.type"
 
 export type User = {
@@ -5,6 +6,8 @@ export type User = {
     email: string
     username: string
     avatar: string | null
+    firstname: string | null
+    lastname: string | null
     favorites: EventType[]
     permission: {
         id: number
@@ -13,4 +16,5 @@ export type User = {
         canUpdate: boolean
         canSave: boolean
     }
+    addresses: Address[]
 }

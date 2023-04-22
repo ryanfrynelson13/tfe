@@ -16,7 +16,8 @@ export class UsersService {
     async getOneUser(userId: number){
         const user = await this.usersRepo.findOne({where: {id: userId}, relations:{
             favorites: true,
-            permission: true
+            permission: true,
+            addresses: true
         }})
 
         if(!user){

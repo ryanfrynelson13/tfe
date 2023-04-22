@@ -28,7 +28,7 @@ export class UsersController {
         return this.usersService.getProfile(userId)
     }
 
-    @Patch('')
+    @Patch()
     updateUser(
         @Request() req,
         @Body() user: UpdateUserDto

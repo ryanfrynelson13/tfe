@@ -32,6 +32,7 @@ const Session = ({id, startTime, tickets, display, onDisplay, eventId}: SessionP
         let basketProduct = {
             eventId: eventId,
             sessionId: id,
+            checkOut: true,
             tickets: elementsToAdd
         }
 

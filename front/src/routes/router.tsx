@@ -2,6 +2,7 @@ import App from "../App";
 import LoginContainer from "../containers/auth/login/LoginContainer";
 import SignupContainer from "../containers/auth/signup/SignupContainer";
 import Order from "../containers/order/Order";
+import UserInfo from "../containers/user-info/UserInfo";
 import AuthPage from "../pages/auth-page/AuthPage";
 import CategoriesPage from "../pages/categories-page/CategoriesPage";
 import CategoryEventsPage from "../pages/category-events-page/CategoryEventsPage";
@@ -55,6 +56,10 @@ export const routes = [
                     {
                         index: true,
                         element: <Order />
+                    },
+                    {
+                        path: 'personnal-info',
+                        element: <UserInfo />
                     }
                 ]
             }

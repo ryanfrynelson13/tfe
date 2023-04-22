@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 import classes from './signup.module.css'
 import { useForm, SubmitHandler } from "react-hook-form"
-
-
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 import SignupForm from "../../../types/auth/signup-form.type"
