@@ -7,7 +7,9 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({
       whitelist: true
   }))
-  app.enableCors()
+  app.enableCors({
+    origin: ['http://localhost:5173', 'https://r.stripe.com'],
+  })
   await app.listen(3000);
 }
 bootstrap();

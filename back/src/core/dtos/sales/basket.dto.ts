@@ -9,11 +9,16 @@ export class BasketDto {
 
     @IsNumber()
     total: number
+
+    @IsNumber()
+    checkOutTotal: number
 }
 
 
 type BasketProduct = {
     sessionId: number
+    eventId: number
+    checkOut: boolean
     tickets:  BasketTicket[]
 }
 

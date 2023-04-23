@@ -53,9 +53,9 @@ const Session = ({id, startTime, tickets, display, onDisplay, eventId}: SessionP
                 }
             }
             console.log(basketProduct.tickets)
-            setBasket({products: basket.products.map(product => product.sessionId === id ? basketProduct : product), total: basket.total+ priceToAdd})
+            setBasket({products: basket.products.map(product => product.sessionId === id ? basketProduct : product), total: basket.total+ priceToAdd, checkOutTotal: +basket.checkOutTotal.toFixed(2) + +priceToAdd.toFixed(2)* 100})
         }else{
-            setBasket({products: [...basket.products, basketProduct], total: basket.total+ priceToAdd})
+            setBasket({products: [...basket.products, basketProduct], total: basket.total+ priceToAdd,checkOutTotal: +basket.checkOutTotal.toFixed(2) + +priceToAdd.toFixed(2)* 100})
         }
 
         setTicketsToAdd(tickets.map(ticket => ({...ticket, nb: 0})))

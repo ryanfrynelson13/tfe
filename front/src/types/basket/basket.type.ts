@@ -2,6 +2,7 @@ import { TicketPrice } from "../ticket-prices/ticket-price.type"
 
 export type BasketType = {
     products: BasketProduct[]
+    checkOutTotal: number
     total: number
 }
 

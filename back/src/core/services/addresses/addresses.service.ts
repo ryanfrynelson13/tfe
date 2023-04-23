@@ -1,6 +1,7 @@
-import { Injectable} from "@nestjs/common";
+import { Injectable, NotFoundException} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { AddressUserEntity } from "src/core/models/entities/address-user.entity";
+import { UserEntity } from "src/core/models/entities/user.entity";
 import { Repository } from "typeorm";
 
 
@@ -8,7 +9,8 @@ import { Repository } from "typeorm";
 export class AddressesService{
 
     constructor(
-        @InjectRepository(AddressUserEntity) private categoriesRepo: Repository<AddressUserEntity>
+        @InjectRepository(AddressUserEntity) private addressesRepo: Repository<AddressUserEntity>,
+        @InjectRepository(UserEntity) private usersRepo: Repository<UserEntity>
     ){}
        
     async getCountries() {
@@ -22,6 +24,21 @@ export class AddressesService{
         countriesList = countriesList.map(country => country.name.common)
 
         return countriesList
+    }
+
+    async create(userId: number, address: AddressType){
+        
+        const newAddress = await this.addressesRepo.create(address)
+
+        const user = await this.usersRepo.findOneBy({id: userId})
+
+        if(!user){
+            throw new NotFoundException
+        }
+
+        newAddress.user = user
+
+        return this.addressesRepo.save(newAddress)
     }
        
 }

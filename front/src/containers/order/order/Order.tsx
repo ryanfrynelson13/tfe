@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil"
-import { basketAtom } from "../../atoms/basket.atom"
-import BasketProduct from "../../components/basket/basket-product/BasketProduct"
+import { basketAtom } from "../../../atoms/basket.atom"
+import BasketProduct from "../../../components/basket/basket-product/BasketProduct"
 import classes from './order.module.css'
 import { Checkbox } from "@mui/material"
 import { useNavigate } from "react-router-dom"
@@ -17,7 +17,7 @@ const Order = () => {
         let priceDifference = basket.products.find(product => product.sessionId === sessionId)?.tickets.reduce((total, {pricePerTicket, nb}) => {
             return  total + pricePerTicket *nb
          }, 0)
-        setBasket({...basket, products: basket.products.map(product => product.sessionId === sessionId ? {...product, checkOut: e.target.checked}: product), total: e.target.checked ? basket.total + (priceDifference ?? 0) : basket.total - (priceDifference ?? 0)})
+        setBasket({...basket, products: basket.products.map(product => product.sessionId === sessionId ? {...product, checkOut: e.target.checked}: product), checkOutTotal: e.target.checked ? basket.checkOutTotal + +((priceDifference!*100).toFixed(2)  ?? 0) : +basket.checkOutTotal.toFixed(2) - +((priceDifference!*100).toFixed(2) ?? 0)})
         if(displayAlert){
             setDisplayAlert(false)
         }
@@ -32,7 +32,7 @@ const Order = () => {
     }
 
     const productsMap = basket.products?.map(product => (
-        <div className={classes.product}>
+        <div key={product.sessionId} className={classes.product}>
             <div className={classes.tickets}>
                 <BasketProduct key={product.sessionId} {...product}/>
             </div>
@@ -50,7 +50,7 @@ const Order = () => {
                 {productsMap}   
             </div>
             <div className={classes.actions}>
-                <p>Total: {basket.total.toFixed(2)}€ </p>
+                <p>Total: {(basket.checkOutTotal/100).toFixed(2)}€ </p>
                 <div>
                     {displayAlert && <Alert severity="info">No items in check out!</Alert>}
                     <button onClick={handleClick}>Personnal info</button>

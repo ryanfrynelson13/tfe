@@ -11,11 +11,6 @@ export class AddressUserEntity {
     @Column({
         type: 'varchar'
     })
-    type: string
-
-    @Column({
-        type: 'varchar'
-    })
     country: string
 
     @Column({

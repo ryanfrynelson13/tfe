@@ -1,6 +1,5 @@
 export type Address = {
-    id: number
-    type: string
+    id?: number
     country: string
     postalCode: string
     number: string

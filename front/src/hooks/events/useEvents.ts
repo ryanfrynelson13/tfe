@@ -13,6 +13,12 @@ const useEvents = (limit: number, page: number, sortBy: string) => {
 
     useEffect(() => {
         getEvents()
+
+        return () => {
+            setLoading(true)
+            setEvents([])
+            setError(null)
+        }
     },[page, limit,sortBy, filters])
     let getEvents = async() => {
         try {
