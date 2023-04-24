@@ -15,7 +15,7 @@ export class EventEntity {
 
     @Column({
         type: 'varchar',
-        nullable: false
+        nullable: true
     })
     title: string
 

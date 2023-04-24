@@ -44,11 +44,11 @@ export class SalesService{
      }
 
      getPublicKey() {
+        console.log(process.env.STRIPE_KEY)
         return process.env.STRIPE_KEY
      }
 
      async createStripeSale(amount: number) {
-        console.log(amount)
         const paymentIntent = await  this.stripe.paymentIntents.create({
             currency: 'eur',
             amount: amount,

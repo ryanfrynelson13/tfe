@@ -28,6 +28,7 @@ const StripeContainer = () =>{
             }
         })
             .then(({data}) => {
+                console.log(data)
                 setStripePromise(loadStripe(data))
             } )
     }, [])
