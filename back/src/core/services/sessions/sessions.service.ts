@@ -24,6 +24,19 @@ export class SessionsService {
         return session
     }
 
+    async createSession(eventId: number, startTime: string){
+
+        const event = await this.eventsRepo.findOne({where:{id: eventId},relations: {sessions: true}})
+
+        const placesLeft = event.places
+
+        const session = await this.sessionsRepo.create({startTime, placesLeft: placesLeft})
+
+        session.event = event
+
+        return this.sessionsRepo.save(session)
+    }
+
     async createMultipleSessions(eventId: number, openDays: number[], startTime: string, closeTime: string) {
 
         const event = await this.eventsRepo.findOne({where:{id: eventId},relations: {sessions: true}})

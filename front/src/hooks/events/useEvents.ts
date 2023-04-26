@@ -8,7 +8,7 @@ import { filtersAtom } from "../../atoms/filters.atom"
 const useEvents = (limit: number, page: number, sortBy: string) => {
     const [isLoading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<unknown>(null)
-    const [events, setEvents] = useState<EventType[]>([])
+    const [events, setEvents] = useState<EventType[] | null>()
     const filters = useRecoilValue(filtersAtom)
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const useEvents = (limit: number, page: number, sortBy: string) => {
 
         return () => {
             setLoading(true)
-            setEvents([])
+            setEvents(null)
             setError(null)
         }
     },[page, limit,sortBy, filters])

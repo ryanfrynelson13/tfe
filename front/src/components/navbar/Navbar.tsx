@@ -51,12 +51,15 @@ const Navbar = () => {
                 >
                     Categories
                 </NavLink>
-                <NavLink 
-                    to='/trending'
-                    className={({isActive}) => isActive ? classes.active : undefined }
-                >
-                    Trending
-                </NavLink>
+                {
+                    user?.permission.id === 2 &&
+                    <NavLink 
+                        to='/event-maker/dashboard'
+                        className={({isActive}) => isActive ? classes.active : undefined }
+                    >
+                        DashBoard
+                    </NavLink>
+                }
             </div>
             <div className={classes['nav-right']}>
                 <div className={classes.search}>

@@ -26,7 +26,7 @@ const UserMenu = () => {
     }
 
     const logout = () => {
-        localStorage.clear()
+        localStorage.removeItem('access_token')
         setUser(undefined)
         navigate('/')
     }
@@ -75,7 +75,14 @@ const UserMenu = () => {
                 navigate('/profile')
                 handleClose()
             }}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My Events</MenuItem>
+             <MenuItem onClick={() => {
+                navigate('/profile/orders')
+                handleClose()
+            }}>My Orders</MenuItem>
+            <MenuItem onClick={() => {
+                navigate('/profile/my-events')
+                handleClose()
+            }}>My Events</MenuItem>
             <MenuItem onClick={() => {
                 navigate('/profile/favorites')
                 handleClose()

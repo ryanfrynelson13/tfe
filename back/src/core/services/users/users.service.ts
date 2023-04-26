@@ -17,7 +17,8 @@ export class UsersService {
         const user = await this.usersRepo.findOne({where: {id: userId}, relations:{
             favorites: true,
             permission: true,
-            addresses: true
+            addresses: true,
+            locations: true
         }})
 
         if(!user){
@@ -41,7 +42,8 @@ export class UsersService {
                     event: true
                 },
                 ticketPrice: true
-            }}
+            }},
+            locations: true
         }})
 
         if(!user){

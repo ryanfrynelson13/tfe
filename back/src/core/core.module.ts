@@ -26,6 +26,7 @@ import { SeederService } from "./services/seeder/seeder.service";
 import { SalesService } from "./services/sales/sales.service";
 import { TicketsService } from "./services/tickets/tickets.service";
 import { AddressesService } from "./services/addresses/addresses.service";
+import { LocationsService } from "./services/locations/locations.service";
 
 @Module({
     exports: [
@@ -41,7 +42,8 @@ import { AddressesService } from "./services/addresses/addresses.service";
         SeederService,
         SalesService,
         TicketsService,
-        AddressesService
+        AddressesService,
+        LocationsService
     ],
     imports: [
         TypeOrmModule.forFeature([
@@ -76,7 +78,8 @@ import { AddressesService } from "./services/addresses/addresses.service";
         SeederService,
         SalesService,
         TicketsService,
-        AddressesService
+        AddressesService,
+        LocationsService
     ]    
 })
 export class CoreModule{}

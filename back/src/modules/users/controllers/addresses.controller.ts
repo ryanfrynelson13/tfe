@@ -3,7 +3,7 @@ import { AddressDto } from 'src/core/dtos/addresses/address.dto';
 import { AuthGard } from 'src/core/guards/auth.guard';
 import { AddressesService } from 'src/core/services/addresses/addresses.service';
 
-@Controller('addresses')
+@Controller('users/addresses')
 export class AddressesController {
     constructor(
         private readonly addressesService: AddressesService

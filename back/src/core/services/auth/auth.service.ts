@@ -48,7 +48,7 @@ export class AuthService {
             throw new NotFoundException('user does not exist')
         }
 
-        const userToLogin = await this.usersRepo.findOne({where: {email: user.email}, relations: {favorites: true, permission: true, addresses: true}})
+        const userToLogin = await this.usersRepo.findOne({where: {email: user.email}, relations: {favorites: true, permission: true, addresses: true, locations: true}})
 
         const checkPassword = await bcrypt.compare(user.password, userToLogin.password)
 

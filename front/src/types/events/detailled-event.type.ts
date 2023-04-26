@@ -1,5 +1,5 @@
 import { Category } from "../categories/category.type";
-import { Location } from "../locations/location.type";
+import { LocationType } from "../locations/location.type";
 import { Session } from "../sessions/session.type";
 import { EventType } from "./event.type";
 
@@ -8,9 +8,9 @@ export type DetailledEvent = EventType & {
     endDate: string
     intro: string
     description: string
-    duration: string
+    duration: number
     places: number
-    location: Location
+    location: LocationType
     sessions: Session[]
     category: Category
 }

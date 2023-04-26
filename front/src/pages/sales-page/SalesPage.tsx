@@ -2,6 +2,8 @@ import { useRecoilValue } from "recoil"
 import { userAtom } from "../../atoms/user.atom"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import Banner from "../../components/banner/Banner"
+import Sales from "../../containers/sales/Sales"
 
 
 const SalesPage = () => {
@@ -17,7 +19,8 @@ const SalesPage = () => {
 
     return(
         <>
-            <h1>Sales</h1>
+            <Banner imageUrl="" title="My Orders" />
+            <Sales />
         </>
     )
 }

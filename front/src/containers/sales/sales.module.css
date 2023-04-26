@@ -1,0 +1,29 @@
+.sale{
+    width: 70%;
+    margin: 4ch auto;
+    background-color: white;
+    padding: 4ch;
+    color: #03002e;
+}
+
+.ticket{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #03002e;
+    padding: 2ch;
+    margin: 2ch auto;
+}
+
+.title{
+    width: 40%;
+}
+
+.qr{
+    height: 5vh;
+}
+
+.qr >img{
+    object-fit: cover;
+    height: 100%;
+    width: auto;
+}

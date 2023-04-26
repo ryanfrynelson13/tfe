@@ -5,13 +5,17 @@ import classes from './order.module.css'
 import { Checkbox } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { Alert }from '@mui/material'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Order = () => {
     const [basket, setBasket] = useRecoilState(basketAtom)
     const navigate = useNavigate()
 
     const [displayAlert, setDisplayAlert] = useState<boolean>(false) 
+
+    useEffect(() => {
+        setBasket({...basket, products: basket.products.map(product => ({...product, checkOut: true})), checkOutTotal: basket.total * 100})
+    }, [])
 
     const handleCheck = (e: React.ChangeEvent<HTMLInputElement>, sessionId: number) => {
         let priceDifference = basket.products.find(product => product.sessionId === sessionId)?.tickets.reduce((total, {pricePerTicket, nb}) => {

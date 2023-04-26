@@ -36,7 +36,7 @@ const BasketProduct = ({eventId, tickets, sessionId}: BasketProductProps) => {
 
     
     const handleNumberChange = (id: number, step: number, price: number) => {
-        setBasket(basket => ({products: basket.products.map(product => product.sessionId === sessionId ? {...product, tickets: product.tickets.map(ticket => ticket.id === id? {...ticket, nb: ticket.nb + step}: ticket)} : product), total: basket.total + price * step}))
+        setBasket(basket => ({...basket,products: basket.products.map(product => product.sessionId === sessionId ? {...product, tickets: product.tickets.map(ticket => ticket.id === id? {...ticket, nb: ticket.nb + step}: ticket)} : product), total: basket.total + price * step}))
     }
 
     const ticketsMap = tickets?.map(ticket => (

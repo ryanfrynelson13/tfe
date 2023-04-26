@@ -35,4 +35,21 @@ export class TicketsService{
 
     }
 
+    getTickets(saleId: number){
+
+        return this.ticketsRepo.find({
+            relations: {
+                sale: true,
+                session: {event: true},
+                ticketPrice: true
+            },
+            where: {
+                sale: {
+                    id: saleId
+                }
+            }
+            
+        })
+    }
+
 }

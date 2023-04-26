@@ -1,6 +1,8 @@
 import App from "../App";
 import LoginContainer from "../containers/auth/login/LoginContainer";
 import SignupContainer from "../containers/auth/signup/SignupContainer";
+import EventForm from "../containers/dashboard/event-form/EventForm";
+import TicketsForm from "../containers/dashboard/tickets-form/TicketsForm";
 import Confirmed from "../containers/order/confirmed/Confirmed";
 import Order from "../containers/order/order/Order";
 import StripeContainer from "../containers/order/stripe/StripeContainer";
@@ -9,9 +11,11 @@ import AuthPage from "../pages/auth-page/AuthPage";
 import CategoriesPage from "../pages/categories-page/CategoriesPage";
 import CategoryEventsPage from "../pages/category-events-page/CategoryEventsPage";
 import CheckOut from "../pages/check-out-page/CheckOut";
+import DashBoardPage from "../pages/dashboard-page/DashboardPage";
 import EventPage from "../pages/event-page/EventPage";
 import FavoritesPage from "../pages/favorites-page/FavoritesPage";
 import LandingPage from "../pages/landing-page/LandingPage";
+import MyEventsPage from "../pages/my-events-page/MyEventsPage";
 import ProfilePage from "../pages/profile-page/ProfilePage";
 import SalesPage from "../pages/sales-page/SalesPage";
 import UserReviewsPage from "../pages/user-reviews-page/UserReviewPage";
@@ -79,7 +83,7 @@ export const routes = [
                 element: <ProfilePage />
             },
             {
-                path:'profile/sales',
+                path:'profile/orders',
                 element: <SalesPage />
             },
             {
@@ -89,6 +93,24 @@ export const routes = [
             {
                 path:'profile/reviews',
                 element: <UserReviewsPage />
+            },
+            {
+                path:'profile/my-events',
+                element: <MyEventsPage />
+            },
+            {
+                path:'event-maker/dashboard',
+                element: <DashBoardPage />,
+                children: [
+                    {
+                        index: true,
+                        element: <EventForm />
+                    },
+                    {
+                        path: 'tickets',
+                        element: <TicketsForm/>
+                    }
+                ]
             }
         ]
     }

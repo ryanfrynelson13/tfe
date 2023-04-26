@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Query, UseGuards, Request } from '@nestjs/common';
 import { EventsService } from '../../../core/services/events/events.service';
 import { CreateEventDto } from 'src/core/dtos/events/create-event.dto';
 import { updateEventDto } from 'src/core/dtos/events/update-event.dto';
 import { FiltersDto } from 'src/core/dtos/events/filters.dto';
+import { AuthGard } from 'src/core/guards/auth.guard';
 
 @Controller('events')
 export class EventsController {
@@ -37,19 +38,32 @@ export class EventsController {
     ){
         return this.eventsService.findSearchedEvents(q, limit)        
     }
+    
+    @UseGuards(AuthGard)
+    @Get('user')
+    getUserEvents(
+        @Request() req
+    ){
+        const user = req.user
+        return this.eventsService.getUserEvents(user.id)
+    }  
+
+    @UseGuards(AuthGard)
+    @Post('create')
+    createEvent(
+        @Request() req,
+        @Body() event: CreateEventDto
+    ){
+        console.log('hi')
+        const {id} = req.user
+        return this.eventsService.createEvent(id, event)
+    }
 
     @Get(':id')
     getOneEvent(
         @Param('id') id: number
     ){
         return this.eventsService.findOneEvent(id)
-    }
-
-    @Post()
-    createEvent(
-        @Body() event: CreateEventDto
-    ){
-        return this.eventsService.createEvent(event)
     }
 
     @Patch(':id')
@@ -59,4 +73,6 @@ export class EventsController {
     ){
         return this.eventsService.updateEvent(event, id)
     }
+
+   
 }

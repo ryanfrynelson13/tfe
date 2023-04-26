@@ -9,6 +9,7 @@ import { StarBorderOutlined } from "@mui/icons-material"
 import { postNewReview } from "../../api/reviews/new-review"
 import { deleteReview } from "../../api/reviews/delete-review"
 import { updateReview } from "../../api/reviews/update-review"
+import useUserEvents from "../../hooks/users/useUserEvents"
 
 type ReviewsProps = {
     reviews: ReviewType[]
@@ -18,6 +19,8 @@ type ReviewsProps = {
 const Reviews = ({reviews, eventId}: ReviewsProps) => {
 
     const user = useRecoilValue(userAtom)
+
+    const {events}= useUserEvents()
 
     const [reviewsList, setReviewsList] = useState<ReviewType[]>([...reviews])
     const [stars, setStars] = useState<number | null>(1)
@@ -77,7 +80,7 @@ const Reviews = ({reviews, eventId}: ReviewsProps) => {
                 {reviewsMap}       
             </div>
             {
-                user && !alreadyReviewed &&
+                user && !alreadyReviewed && events?.some(event => event.event.id === eventId && event.ended) &&
                 <div className={classes['add-review']}>
                     <h2>Leave Review</h2>
                     <form onSubmit={handleSubmit}>

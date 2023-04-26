@@ -44,7 +44,6 @@ export class SalesService{
      }
 
      getPublicKey() {
-        console.log(process.env.STRIPE_KEY)
         return process.env.STRIPE_KEY
      }
 
@@ -58,5 +57,27 @@ export class SalesService{
         })
 
         return paymentIntent.client_secret
+     }
+
+     getUsersSales(userId: number){
+
+        return this.saleRepo.find({
+            relations: {
+                user: true,
+                tickets: {
+                    session: {
+                        event: true
+                    }
+                }
+            },
+            where: {
+                user: {
+                    id : userId
+                }
+            },
+            order: {
+                createdAt: 'DESC'
+            }
+        })
      }
 }

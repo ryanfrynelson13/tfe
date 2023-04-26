@@ -23,16 +23,15 @@ export class SalesController {
         return this.salesService.createSale(user.id, basket)
     }
 
-    // @Get(':id')
-    // getOne(
-    //     @Param('id') id: number
-    // ){
-
-    // }
+    @Get('tickets/:id')
+    getTickets(
+        @Param('id') id: number
+    ){
+        return this.ticketsService.getTickets(id)
+    }
 
     @Get('promise')
     getStripePk(){
-        console.log('yo')
         return this.salesService.getPublicKey()
     }
 
@@ -41,6 +40,14 @@ export class SalesController {
         @Body() body: any
     ){
         return this.salesService.createStripeSale(body.amount)
+    }
+
+    @Get('user')
+    getUserSales(
+        @Request() req
+    ){
+        const user = req.user
+        return this.salesService.getUsersSales(user.id)
     }
 
 }

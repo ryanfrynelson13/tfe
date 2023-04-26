@@ -1,0 +1,36 @@
+.tickets{
+    width: 30%;
+    margin: 4ch auto;
+    background-color: white;
+    padding: 4ch;
+    color: #03002e;
+}
+
+.tickets form{
+    margin: 0 auto;
+    color: #03002e;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    width: 90%;
+}
+
+.tickets label{
+    width: 40%;
+}
+
+.tickets input[type= 'text']{
+    width: 40%;
+    padding: 0.5ch 1ch;
+    font-size: 1rem;
+    font-family: inherit;
+    margin: 2ch;
+}
+
+.tickets form > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
