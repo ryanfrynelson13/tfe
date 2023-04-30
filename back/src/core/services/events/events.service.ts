@@ -124,8 +124,6 @@ export class EventsService {
 
     async createEvent(userId: number, event: NewEventType) {
 
-        console.log('hi')
-
         const newEvent: EventEntity = await this.eventRepo.create(event.event)
         
         const user = await this.usersService.getOneUser(userId)

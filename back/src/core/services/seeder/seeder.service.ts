@@ -42,106 +42,106 @@ export class SeederService{
 
     async populate() {
 
-        // for(const permission of permissions){
-        //     let newPerm = await this.permissionRepo.create(permission)
-        //     await this.permissionRepo.save(newPerm)
-        // }
+        for(const permission of permissions){
+            let newPerm = await this.permissionRepo.create(permission)
+            await this.permissionRepo.save(newPerm)
+        }
         
-        // for(const category of categories){
-        //     let newCat = await this.categoryRepo.create(category)
-        //     await this.categoryRepo.save(newCat)
-        // }
-        // const users = usersArr.users
-        // for(const userObj of users){
-        //     userObj.user.password = await bcrypt.hash(userObj.user.password, 4)
-        //     const newUser = await this.userRepo.create(userObj.user)
+        for(const category of categories){
+            let newCat = await this.categoryRepo.create(category)
+            await this.categoryRepo.save(newCat)
+        }
+        const users = usersArr.users
+        for(const userObj of users){
+            userObj.user.password = await bcrypt.hash(userObj.user.password, 4)
+            const newUser = await this.userRepo.create(userObj.user)
 
-        //     const userPermission = await this.permissionRepo.findOne({where: {id: userObj.permissionId}})
+            const userPermission = await this.permissionRepo.findOne({where: {id: userObj.permissionId}})
 
-        //     newUser.permission = userPermission
+            newUser.permission = userPermission
 
-        //     if(userObj.permissionId === 2){
+            if(userObj.permissionId === 2){
 
-        //         let random = Math.floor(Math.random() *3)
+                let random = Math.floor(Math.random() *3)
 
-        //         const allLoc: EventLocationEntity[] = []
+                const allLoc: EventLocationEntity[] = []
 
-        //         while(random <= 2){
-        //             const randomLoc = locations[Math.floor(Math.random() *locations.length)]
-        //             const location = await this.locationRepo.create(randomLoc)
+                while(random <= 2){
+                    const randomLoc = locations[Math.floor(Math.random() *locations.length)]
+                    const location = await this.locationRepo.create(randomLoc)
     
-        //             await this.locationRepo.save(location)
-        //             allLoc.push(location)
+                    await this.locationRepo.save(location)
+                    allLoc.push(location)
 
-        //             random++
-        //         }
+                    random++
+                }
 
-        //         newUser.locations = allLoc
-        //     }
-        //     await this.userRepo.save(newUser)
+                newUser.locations = allLoc
+            }
+            await this.userRepo.save(newUser)
 
-        //     const random = Math.floor(Math.random() *3)
+            const random = Math.floor(Math.random() *3)
 
-        //     if(random !== 2){
-        //         const randomAdd =adresses[Math.floor(Math.random() *adresses.length)]
-        //         const address = await this.userAddressRepo.create(randomAdd)
+            if(random !== 2){
+                const randomAdd =adresses[Math.floor(Math.random() *adresses.length)]
+                const address = await this.userAddressRepo.create(randomAdd)
 
-        //         address.user = newUser
+                address.user = newUser
 
-        //         await this.userAddressRepo.save(address)                
-        //     }
+                await this.userAddressRepo.save(address)                
+            }
 
             
 
 
-        // }
+        }
 
-        // for(let event of events){
-        //     const durations = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200]
+        for(let event of events){
+            const durations = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200]
 
-        //     event.duration = durations[Math.floor(Math.random() *durations.length)]
+            event.duration = durations[Math.floor(Math.random() *durations.length)]
 
-        //     const newEvent = await this.eventRepo.create(event)
+            const newEvent = await this.eventRepo.create(event)
 
-        //     newEvent.imageUrl = eventImages[Math.floor(Math.random() *eventImages.length)]
+            newEvent.imageUrl = eventImages[Math.floor(Math.random() *eventImages.length)]
 
-        //     const categories = await this.categoryRepo.find({})
+            const categories = await this.categoryRepo.find({})
 
-        //     newEvent.category = categories[Math.floor(Math.random() *categories.length)]
+            newEvent.category = categories[Math.floor(Math.random() *categories.length)]
 
-        //     const users = await this.userRepo.find({relations: {permission: true, locations: true}})
+            const users = await this.userRepo.find({relations: {permission: true, locations: true}})
 
-        //     const eventMakers = users.filter(user => user.permission.id === 2)
+            const eventMakers = users.filter(user => user.permission.id === 2)
 
-        //     newEvent.user = eventMakers[Math.floor(Math.random() *eventMakers.length)]
+            newEvent.user = eventMakers[Math.floor(Math.random() *eventMakers.length)]
 
-        //     newEvent.location = newEvent.user.locations[Math.floor(Math.random() *newEvent.user.locations.length)]
+            newEvent.location = newEvent.user.locations[Math.floor(Math.random() *newEvent.user.locations.length)]
 
-        //     let randomTicks = Math.floor(Math.random() *6)
-        //     const allTicks: TicketPriceEntity[] = [] 
-        //     while(randomTicks <= 5){
-        //         const ticketPrice = await this.priceRepo.create(ticketPrices[Math.floor(Math.random() *ticketPrices.length)])
+            let randomTicks = Math.floor(Math.random() *6)
+            const allTicks: TicketPriceEntity[] = [] 
+            while(randomTicks <= 5){
+                const ticketPrice = await this.priceRepo.create(ticketPrices[Math.floor(Math.random() *ticketPrices.length)])
 
-        //         await this.priceRepo.save(ticketPrice)
+                await this.priceRepo.save(ticketPrice)
 
-        //         allTicks.push(ticketPrice)
-        //         randomTicks ++
-        //     }
+                allTicks.push(ticketPrice)
+                randomTicks ++
+            }
 
-        //     newEvent.tickets = allTicks
+            newEvent.tickets = allTicks
 
-        //     await this.eventRepo.save(newEvent)
+            await this.eventRepo.save(newEvent)
 
-        //     const options = [
-        //         {openDays: [1,2,3,4,5], startTime: '10h30', closeTime: '18h00'},
-        //         {openDays: [1,2,4,5], startTime: '9h00', closeTime: '16h00'},
-        //         {openDays: [1,2,3,4,5,6], startTime: '14h30', closeTime: '20h00'}
-        //     ]
+            const options = [
+                {openDays: [1,2,3,4,5], startTime: '10h30', closeTime: '18h00'},
+                {openDays: [1,2,4,5], startTime: '9h00', closeTime: '16h00'},
+                {openDays: [1,2,3,4,5,6], startTime: '14h30', closeTime: '20h00'}
+            ]
 
-        //     const sessionParams = options[Math.floor(Math.random() *3)]
+            const sessionParams = options[Math.floor(Math.random() *3)]
 
-        //     await this.sessionsService.createMultipleSessions(newEvent.id, sessionParams.openDays, sessionParams.startTime, sessionParams.closeTime)            
-        // }
+            await this.sessionsService.createMultipleSessions(newEvent.id, sessionParams.openDays, sessionParams.startTime, sessionParams.closeTime)            
+        }
 
         let usersForNext = await this.userRepo.find({relations: {sales: true, permission: true, reviews: true, favorites: true}})
 

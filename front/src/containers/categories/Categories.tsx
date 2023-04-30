@@ -1,4 +1,5 @@
 import CategoryCard from "../../components/category/category-card/CategoryCard"
+import Spinner from "../../components/spinner/Spinner"
 import { useCategories } from "../../hooks/events/useCategories"
 import { Category as CategoryType } from "../../types/categories/category.type"
 import classes from './categories.module.css'
@@ -14,7 +15,7 @@ const Categories = () => {
 
     return isLoading ? (
         <>
-            ...Loading
+            <Spinner height={'60vh'}/>
         </>
     ): categories ? (
         <div className={classes.grid}>

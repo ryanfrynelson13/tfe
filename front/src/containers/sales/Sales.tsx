@@ -6,6 +6,7 @@ import classes from './sales.module.css'
 import * as dayjs from 'dayjs'
 import usetickets from "../../hooks/events/useTickets"
 import { Ticket } from "../../types/tickets/ticket.type"
+import Spinner from "../../components/spinner/Spinner"
 
 const SaleTicket = ({session, ticketPrice}:Ticket) => (
     <div className={classes.ticket}>        
@@ -37,7 +38,7 @@ const Sale = ({sale}: {sale: SaleType}) => {
             <div>
                 {
                     isLoading ? 
-                    'Loading...':
+                    <Spinner height={'100%'}/>:
                     ticketsMap
                 }
             </div>
@@ -70,12 +71,17 @@ const Sales = () => {
         <Sale key={sale.id} sale={sale}/>
     ))
 
-    return(
+    return isLoading?(
+        <>
+            <Spinner height="60vh" />
+        </>
+    ):
+    (
         <div>
             <div>
                 {salesMap}
             </div>
-            {sales && sales?.length > 1 && <Pagination onPage={changePage} count={sales?.length}/>}  
+            {sales && sales?.length > 1 && <Pagination page={page} onPage={changePage} count={sales?.length}/>}  
         </div>
     )
 }

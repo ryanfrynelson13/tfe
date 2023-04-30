@@ -39,7 +39,7 @@ const Favorites = () => {
             <div className={classes.grid}>
                 {favoritesMap}
             </div>  
-            {favorites?.length > 1 && <Pagination onPage={changePage} count={favorites.length}/>}  
+            {favorites?.length > 1 && <Pagination page={page} onPage={changePage} count={favorites.length}/>}  
         </>
     )
 }

@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { CreateMultipleSessionsDto } from "src/core/dtos/sessions/create-multiple-sessions.dto";
+import { CreateSessionDto } from "src/core/dtos/sessions/create-session.dto";
 import { SessionsService } from "src/core/services/sessions/sessions.service";
 
 
@@ -15,6 +16,13 @@ export class SessionsController{
         @Param('id') id: number
     ){
         return this.sessionsService.findOneSession(id)
+    }
+
+    @Post()
+    createOne(
+        @Body() body: CreateSessionDto
+    ){
+        return this.sessionsService.createSession(body.eventId, body.startTime)
     }
 
     @Post('multiple')

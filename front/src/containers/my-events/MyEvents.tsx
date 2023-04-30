@@ -6,6 +6,7 @@ import { userAtom } from "../../atoms/user.atom"
 import { EventType } from "../../types/events/event.type"
 import classes from './my-events.module.css'
 import Pagination from "../../components/pagination/Pagination"
+import Spinner from "../../components/spinner/Spinner"
 
 
 const EventCard = ({id, imageUrl, title}: EventType) => {
@@ -62,7 +63,12 @@ const MyEvents = () => {
     const eventsMap =  eventsOnPage?.map((event) => (
         <EventCard {...event.event} key={event.event.id}/>
     ))
-    return(
+    return isLoading ?(
+        <>
+            <Spinner height="60vh" />
+        </>
+    )
+    :(
         <div className={classes.events}>
             <div className={classes.filters}>
                 <button onClick={() => setDisplay('upcoming')} className={display === 'upcoming' ? classes.active: ''}>Upcoming Events</button>
@@ -71,7 +77,7 @@ const MyEvents = () => {
             <div className={classes.grid}>
                 {eventsMap}
             </div>  
-            {eventsFiltered?.length > 1 && <Pagination onPage={changePage} count={eventsFiltered?.length}/>}  
+            {eventsFiltered?.length > 1 && <Pagination page={page} onPage={changePage} count={eventsFiltered?.length}/>}  
         </div>
     )
 }

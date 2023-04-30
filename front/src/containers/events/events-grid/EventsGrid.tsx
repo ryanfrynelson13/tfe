@@ -8,6 +8,7 @@ import SortBy from "../../../components/sort-by/SortBy"
 import useEventCount from "../../../hooks/events/useEventCount"
 import { useSetRecoilState } from "recoil"
 import { displayFilters } from "../../../atoms/display-filters.atom"
+import Spinner from "../../../components/spinner/Spinner"
 
 
 const EventsGrid = () => {   
@@ -38,7 +39,7 @@ const EventsGrid = () => {
     return isLoading?
     (
         <div>
-            Loading
+            <Spinner height={'60vh'}/>
         </div>
     )
     :
@@ -53,7 +54,7 @@ const EventsGrid = () => {
             <div className={classes.grid}>
                 {eventsMap}
             </div>  
-            {eventCount > 1 && <Pagination onPage={changePage} count={eventCount}/>}       
+            {eventCount > 1 && <Pagination page={page} onPage={changePage} count={eventCount}/>}       
         </>
     )
 }

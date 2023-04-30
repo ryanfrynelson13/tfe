@@ -36,7 +36,7 @@ const StripeContainer = () =>{
     useEffect(() => {
         const token = getToken()
         axios.post(SALES_URLS.sk, {
-            amount: checkOutTotal
+            amount: +checkOutTotal.toFixed(2)
         },{
             headers: {
                 Authorization: `Bearer ${token}`

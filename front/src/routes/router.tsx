@@ -2,6 +2,7 @@ import App from "../App";
 import LoginContainer from "../containers/auth/login/LoginContainer";
 import SignupContainer from "../containers/auth/signup/SignupContainer";
 import EventForm from "../containers/dashboard/event-form/EventForm";
+import SessionsForm from "../containers/dashboard/sessions-form/SessionsForm";
 import TicketsForm from "../containers/dashboard/tickets-form/TicketsForm";
 import Confirmed from "../containers/order/confirmed/Confirmed";
 import Order from "../containers/order/order/Order";
@@ -109,6 +110,10 @@ export const routes = [
                     {
                         path: 'tickets',
                         element: <TicketsForm/>
+                    },
+                    {
+                        path: 'sessions',
+                        element: <SessionsForm/>
                     }
                 ]
             }

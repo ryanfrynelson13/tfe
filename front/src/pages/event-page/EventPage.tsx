@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import Banner from "../../components/banner/Banner"
 import EventInfo from "../../containers/events/event-info/EventInfo"
 import useEvent from "../../hooks/events/useEvent"
+import Spinner from "../../components/spinner/Spinner"
 
 
 const EventPage = () => {
@@ -10,7 +11,7 @@ const EventPage = () => {
     return isLoading ?
     (
         <>
-            ...Loading
+            <Spinner height={'80vh'}/>
         </>
     ): event? 
     (

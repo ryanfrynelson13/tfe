@@ -4,6 +4,7 @@ import { EventEntity } from 'src/core/models/entities/event.entity';
 import { SessionEntity } from "src/core/models/entities/sessions.entity";
 import { createSessionsDates } from 'src/core/utils/sessions.utils';
 import { Repository } from "typeorm";
+import * as dayjs from 'dayjs'
 
 
 @Injectable()
@@ -24,9 +25,11 @@ export class SessionsService {
         return session
     }
 
-    async createSession(eventId: number, startTime: string){
+    async createSession(eventId: number, start: string){
 
         const event = await this.eventsRepo.findOne({where:{id: eventId},relations: {sessions: true}})
+
+        let startTime = dayjs(event.startDate).hour(+start.split(':')[0]).minute(+start.split(':')[1]).toISOString()
 
         const placesLeft = event.places
 
@@ -41,7 +44,7 @@ export class SessionsService {
 
         const event = await this.eventsRepo.findOne({where:{id: eventId},relations: {sessions: true}})
         
-        const allDates = createSessionsDates(event, openDays, startTime.split('h'), closeTime.split('h'))
+        const allDates = createSessionsDates(event, openDays, startTime.split(':'), closeTime.split(':'))
 
         const placesLeft = event.places
 

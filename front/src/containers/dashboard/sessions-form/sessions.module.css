@@ -1,0 +1,58 @@
+.sessions{
+    width: 60%;
+    margin: 4ch auto;
+    background-color: white;
+    padding: 4ch;
+    color: #03002e;
+    min-height: 20vh;
+    font-size: 1.2rem;
+}
+
+.display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.sessions button{
+    padding: 2ch 4ch;
+    color: white;
+    font-size: 0.8rem;
+    font-family: inherit;
+    background-color: #03002e ;
+    border: 0.2px solid rgba(255, 255, 255, 0.349);
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-left: 2ch;
+    margin-top: 2ch;
+}
+
+.sessions label{
+    margin-bottom: 1ch;
+    font-size: 1.2rem;
+}
+
+.sessions input{
+    padding: 0.5ch 1ch;
+    font-size: 1.2rem;
+    font-family: inherit;
+}
+
+.sessions button:hover,
+.sessions button:active{
+    cursor: pointer;
+    background-color: #17002e ;
+
+}
+
+.sessions form{
+    margin: 0 auto;
+    color: #03002e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    min-height: 20vh ;    
+}

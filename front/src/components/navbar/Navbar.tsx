@@ -52,7 +52,7 @@ const Navbar = () => {
                     Categories
                 </NavLink>
                 {
-                    user?.permission.id === 2 &&
+                    user?.permission?.id === 2 &&
                     <NavLink 
                         to='/event-maker/dashboard'
                         className={({isActive}) => isActive ? classes.active : undefined }
